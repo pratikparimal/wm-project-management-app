@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'wm-project-management-app';
+  title = 'Cognizant - WM Projects Management';
 }
