@@ -1,4 +1,3 @@
-import { ClosureComment } from './openRequirementClasses/closureComment';
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
 
@@ -23,6 +22,7 @@ import { Forecast } from './openRequirementClasses/forecast';
 import { FilledInternally } from './openRequirementClasses/filledInternally';
 import { OpportunityDate } from './openRequirementClasses/opportunityDate';
 import { RequirementDetails } from './openRequirementClasses/requirementDetails';
+import { ClosureComment } from './openRequirementClasses/closureComment';
 
 @Component({
   selector: 'app-open-requirements',
@@ -93,7 +93,7 @@ export class OpenRequirementsComponent implements OnInit {
   }
 
   onOpenRequirementFormSubmit(openRequirementForm: NgForm) {
-    if(openRequirementForm.valid){
+    if (openRequirementForm.valid) {
       console.log(openRequirementForm.value);
       console.log(this.selectedDomain.domainName);
     }
@@ -105,11 +105,11 @@ export class OpenRequirementsComponent implements OnInit {
   //   projectElement: new FormControl(''),
   // });
 
-  //openRequirementForm: FormGroup;
+  // openRequirementForm: FormGroup;
 
   // constructor(private formBuilder: FormBuilder) {}
 
-  //ngOnInit() {
+  // ngOnInit() {
     // this.openRequirementForm = this.formBuilder.group({
     //   "domainElement":[this.selectedDomain.domainName, [Validators.required]],
     //   "ownerElement":[this.owner.ownerName, [Validators.required]],

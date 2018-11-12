@@ -1,17 +1,20 @@
-<div class="mat-typography">
-  <h1 class="mat-display-2">{{title}}</h1>
-  <mat-drawer-container color="primary" class="dashboard-container">
-    <mat-drawer mode="side" opened>
-      <nav>
-        <!--<a routerLink="/requirements">Open Requirements</a>-->
-        <button mat-button routerLink="/requirements">Open Requirements</button>
-        <br>
-        <!--<a routerLink="/resourceupload">Resource Upload</a>-->
-        <button mat-button routerLink="/resourceupload">Resource Upload</button>
-      </nav>
-    </mat-drawer>
-    <mat-drawer-content>
-      <router-outlet></router-outlet>
-    </mat-drawer-content>
-  </mat-drawer-container>
+<div class="mat-typography container">
+  <div class="app-main-header">
+    <h1 class="mat-display-2">{{title}}</h1>
+  </div>
+  <div class="app-main-body">
+    <mat-sidenav-container class="dashboard-container">
+      <mat-sidenav mode="side" opened class="navlink-sidebar">
+        <mat-nav-list>
+          <a mat-list-item routerLink="/requirements">Open Requirements</a>
+        </mat-nav-list>
+        <mat-nav-list>
+          <a mat-list-item routerLink="/resourceupload">Resource Upload</a>
+        </mat-nav-list>
+      </mat-sidenav>
+      <mat-sidenav-content>
+        <router-outlet></router-outlet>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  </div>
 </div>
