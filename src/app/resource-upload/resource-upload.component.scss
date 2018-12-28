@@ -1,0 +1,215 @@
+resource-upload-container{
+    display: flex;
+    margin: 0px 0px;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+}
+
+.resource-upload-header{
+    padding-top: 30px;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    flex: 1;
+    //height: 50px;
+}
+
+// .resource-upload-headerline{
+//     font-size: px;
+//     font-style: bold;
+// }
+
+.resource-upload-display-container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    flex: 1;
+    overflow-x: hidden;
+}
+
+.resource-upload-form-container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    flex: 1;
+    overflow-x: hidden;
+}
+
+.resource-upload-display-control{
+    width: 100%;
+    flex: 1;
+}
+
+
+.resource-upload-display-control > * {
+    padding: 5px;
+    margin: 2px;
+}
+
+.resource-upload-form-control{
+    flex: 1;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.resource-upload-form-control > * {
+    padding: 5px;
+    margin: 2px;
+}
+
+.fx-layout-form-control{
+    flex:1;
+}
+
+/*.controles-container {
+    width: 100%;
+    height: 100%;
+}
+*/
+.controles-container > * {
+    width: 100%;
+    /*height: 100%;*/
+}
+
+.form-buttons{
+    flex:1;
+    display: flex;
+}
+
+.button1{
+    text-align: right;
+    flex:1;
+    align-self: flex-end;
+    padding-right: 5px;
+}
+
+.button2{
+    flex:1;
+    text-align: center;
+   // align-self: flex-start;
+    padding-left: 5px;
+    
+}
+
+.add-another-resource-button{
+    position: center;
+    padding-right:10px;
+}
+
+.submit-resource-button{
+    padding-left: 10px;
+    position: center;
+}
+
+.radio-btn-grp{
+    width: 100%;
+    padding-top: 17px;
+    padding-bottom: 17px;
+}
+
+.radio-label{
+    text-align: start;
+}
+
+.radio-btn-value{
+    padding-right: 5px;
+}
+
+
+
+
+
+
+
+
+/*.div-container1 {
+    background-color: lightblue;
+    margin: 10px;
+    padding:30px;
+    display:flex;
+}*/
+
+/*.main-form {
+    background-color: lightgrey;
+    margin: 10px;
+    padding:30px;
+    display:flex;
+    flex-direction: column;
+}
+
+.project-details {
+    flex:1
+}
+
+.resource-details {
+    flex:1
+}
+
+.fg-details {
+    flex:1
+}
+
+.radio-group {
+    flex:1
+}
+
+.date-info {
+    flex:1
+}
+
+.allocation {
+    display: flex;
+}
+
+.allocation-info {
+    flex:3
+}
+
+.allocation-slider-info {
+    flex:2;
+}
+
+.buttons {
+	width: 90%;
+	min-height: 30px;
+	height: 100%;
+	color: white;
+	font-size: 12px;
+	border-radius: 2px;
+	cursor: pointer;
+	box-shadow: inset 0 -3px 0 rgba(0, 0, 0, .2);
+	-moz-box-shadow: inset 0 -3px 0 rgba(0, 0, 0, .2);
+	-webkit-box-shadow: inset 0 -3px 0 rgba(0, 0, 0, .2);
+	text-decoration: none;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: row;
+	padding: 5px;
+    flex:1
+}
+
+.add-another-resource-button {
+    background: #00aced;
+    flex:1
+}
+
+.add-another-resource-button:hover,
+.add-another-resource-button:active{
+    background: #2d4372;
+}
+
+.submit-resource-button {
+    background: #00aced;
+    flex:1
+}
+
+.submit-resource-button:hover,
+.submit-resource-button:active{
+    background: #2d4372;
+}*/

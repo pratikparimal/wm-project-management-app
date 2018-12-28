@@ -1,0 +1,134 @@
+<div class="resourceDetails">
+  <h1>Resource Details</h1>
+</div>
+<hr>
+<mat-card>
+  <mat-card-content>
+
+    <div fxFlex="25%">
+      <mat-card class="controles-container">
+        <mat-form-field>
+          <mat-select placeholder="Project Details" id="projectName" required #projectDetails>
+            <mat-option *ngFor="let details of projectdetails" [value]="details.id">
+              {{details.id}} - {{details.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-card>
+    </div>
+    
+    <div fxLayoutGap="10px"></div>
+
+    <div fxFlex="25%" class="button2">
+      <button mat-flat-button color="primary" class="submit-resource-button" (click)="Search(projectDetails.value)"
+        type="submit">
+        <span><b>Search</b></span>
+      </button>
+    </div>
+
+    <div fxLayoutGap="10px"></div>
+
+    <div fxFlex="25%">
+      <button mat-flat-button color="primary" (click)="addContact()"><b>Add New Resource</b></button>
+    </div>
+
+    <!-- <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+
+      </mat-form-field> -->
+
+  </mat-card-content>
+</mat-card>
+
+<mat-card class="tableDetails" *ngIf="!hideTable">
+  <mat-card-content>
+
+    <div fxFlex="100%" fxFlexFill>
+      <table mat-table [dataSource]="resultantArray" class="mat-elevation-z8">
+
+        <ng-container matColumnDef="cogId">
+          <th mat-header-cell *matHeaderCellDef> Cognizant ID </th>
+          <td mat-cell *matCellDef="let element"> {{element.cogId}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="wmId">
+          <th mat-header-cell *matHeaderCellDef> Walmart ID </th>
+          <td mat-cell *matCellDef="let element"> {{element.wmId}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="fgWorkId">
+          <th mat-header-cell *matHeaderCellDef> FG Work ID </th>
+          <td mat-cell *matCellDef="let element"> {{element.fgWorkId}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="fgContract">
+          <th mat-header-cell *matHeaderCellDef> FG Contract </th>
+          <td mat-cell *matCellDef="let element"> {{element.fgContract}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="billability">
+          <th mat-header-cell *matHeaderCellDef> Billability </th>
+          <td mat-cell *matCellDef="let element"> {{element.billability}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="allocation">
+          <th mat-header-cell *matHeaderCellDef> Allocation(in %) </th>
+          <td mat-cell *matCellDef="let element"> {{element.allocation}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="location">
+          <th mat-header-cell *matHeaderCellDef> Location </th>
+          <td mat-cell *matCellDef="let element"> {{element.location}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="pickerStart">
+          <th mat-header-cell *matHeaderCellDef> Allocation Start Date </th>
+          <td mat-cell *matCellDef="let element"> {{element.pickerStart}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="pickerEnd">
+          <th mat-header-cell *matHeaderCellDef> Allocation End Date </th>
+          <td mat-cell *matCellDef="let element"> {{element.pickerEnd}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+        <td>
+          <mat-icon (click)="editContact(Contact.ID)">edit</mat-icon>
+        </td>
+        <td>
+          <mat-icon (click)="deleteContact(Contact.ID)">delete</mat-icon>
+        </td>
+
+      </table>
+    </div>
+    <!-- <div class="container">
+      <table class="table">
+        <thead>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Contact Number</th>
+          <th>Email</th>
+        </thead>
+        <tr *ngFor="let Contact of ContactList">
+          <td>{{Contact.FirstName}}</td>
+          <td>{{Contact.LastName}}</td>
+          <td>{{Contact.Contact}}</td>
+          <td>{{Contact.Email}}</td>
+          <td>
+            <mat-icon (click)="editContact(Contact.ID)">edit</mat-icon>
+          </td>
+          <td>
+            <mat-icon (click)="deleteContact(Contact.ID)">delete</mat-icon>
+          </td>
+        </tr>
+      </table>
+    </div> -->
+  </mat-card-content>
+</mat-card>

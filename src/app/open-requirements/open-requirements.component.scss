@@ -1,0 +1,41 @@
+.open-requirement-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.open-requirement-header{
+    padding-top: 30px;
+    text-align: center;
+    flex-direction: column;
+    flex: 1;
+}
+
+.open-requirement-headerline{
+    font-size: 35px;
+    font-style: bold;
+}
+
+.open-requirement-body{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    flex: 1;
+}
+
+.open-requirement-form-body{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    flex: 1;
+}
+
+.add-requirement-button-container{
+    padding-right: 15px;
+}
+
+button{
+    float: right;
+}

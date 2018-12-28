@@ -1,11 +1,15 @@
+
 import { Component } from '@angular/core';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { OpenRequirementFormModel } from './open-requirements/openRequirementClasses/openRequirementFormModel';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'Cognizant - WM Projects Management';
+  titles = 'Cognizant - WM Projects Management';
+
+  // openRequirementModel = new OpenRequirementFormModel();
 }

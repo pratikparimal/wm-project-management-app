@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -13,7 +13,12 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { AppRoutingModule } from './app-routing.module';
 import { MaterialModule } from './material.module';
 import { MatDatepickerModule } from '@angular/material';
-import { FlexLayoutModule } from '@angular/flex-layout';
+import { FlexLayoutModule, FlexModule } from '@angular/flex-layout';
+import { OpenRequirementsViewComponent } from './open-requirements/open-requirements-view/open-requirements-view.component';
+import { OpenRequirementsFormComponent } from './open-requirements/open-requirements-form/open-requirements-form.component';
+import { OpenRequirementService } from './service/open-requirement-service.service';
+import { ResourceDetailsComponent } from './resource-details/resource-details.component';
+
 
 @NgModule({
   declarations: [
@@ -21,7 +26,10 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     DashboardComponent,
     OpenRequirementsComponent,
     ResourceUploadComponent,
-    PageNotFoundComponent
+    ResourceDetailsComponent,
+    PageNotFoundComponent,
+    OpenRequirementsViewComponent,
+    OpenRequirementsFormComponent
   ],
   imports: [
     BrowserModule,
@@ -30,9 +38,11 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MaterialModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    FlexModule
   ],
-  providers: [MatDatepickerModule],
+  entryComponents: [OpenRequirementsFormComponent, ResourceUploadComponent],
+  providers: [MatDatepickerModule, OpenRequirementService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

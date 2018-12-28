@@ -1,18 +1,41 @@
-<!--<div>
-  <mat-drawer-container class="example-container">
-    <mat-drawer mode="side" opened>
-      <nav>
-        <a routerLink="/requirements">Open Requirements</a>
-        <br>
-        <a routerLink="/resourceupload">Resource Upload</a>
-      </nav>
-    </mat-drawer>
-    <mat-drawer-content>
-      <router-outlet></router-outlet>
-    </mat-drawer-content>
-  </mat-drawer-container>
-</div>-->
-
-<!--<mat-toolbar color="primary">
-
-</mat-toolbar>-->
+<div class="mat-typography app-dashboard-container">
+  <div class="app-main-body">
+    <mat-sidenav-container class="app-sidenav-container">
+      <mat-sidenav #sidenav [mode]="isScreenSmall() ? 'over' : 'side'" [opened]="!isScreenSmall()" class="navlink-sidebar mat-elevation-z10">
+        <div class="sidenav-wm-logo">
+          <img class="walmart-logo" alt="Walmart" src="http://boostafosterfamily.org/wp-content/uploads/2017/05/walmart.jpg" title="Walmart">
+        </div>
+        <mat-nav-list>
+          <a mat-list-item class="nav-link" color="primary" routerLink="/requirements">Open Requirements</a>
+          <hr>
+        </mat-nav-list>
+        <mat-nav-list>
+          <a mat-list-item class="nav-link" color="primary" routerLink="/resourceupload">Resource Upload</a>
+          <hr>
+        </mat-nav-list>
+      </mat-sidenav>
+      <mat-sidenav-content class="app-sidenav-content">
+        <div class="app-main-header">
+          <mat-toolbar class="app-header-toolbar" fxLayout="row" fxLayout.xs="column" fxLayoutWrap>
+            <div class="header-toolbar-span-1" >
+              <button mat-button class="sidenav-toggle" (click)="sidenav.toggle()">
+                <mat-icon>menu</mat-icon>
+              </button>
+            </div>
+            <div class="header-toolbar-span-2" >
+              <a routerLink="/requirements">
+                <img class="cts-logo" alt="Cognizant" src="https://www.cognizant.com/content/dam/cognizant_foundation/Dotcomimage/COG-Logo-White.svg"
+                  title="Cognizant">
+              </a>
+            </div>
+            <div class="header-toolbar-span-3" >
+              {{title}}
+            </div>
+          </mat-toolbar>
+        </div>
+        
+        <router-outlet></router-outlet>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  </div>
+</div>
