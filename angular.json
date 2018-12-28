@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "wm-project-management-app": {
+    "wm-project-management-system": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/wm-project-management-app",
+            "outputPath": "dist/wm-project-management-system",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -23,7 +23,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": []
           },
@@ -50,18 +50,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "wm-project-management-app:build"
+            "browserTarget": "wm-project-management-system:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "wm-project-management-app:build:production"
+              "browserTarget": "wm-project-management-system:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "wm-project-management-app:build"
+            "browserTarget": "wm-project-management-system:build"
           }
         },
         "test": {
@@ -72,7 +72,7 @@
             "tsConfig": "src/tsconfig.spec.json",
             "karmaConfig": "src/karma.conf.js",
             "styles": [
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": [],
             "assets": [
@@ -95,7 +95,7 @@
         }
       }
     },
-    "wm-project-management-app-e2e": {
+    "wm-project-management-system-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "architect": {
@@ -103,11 +103,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "wm-project-management-app:serve"
+            "devServerTarget": "wm-project-management-system:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "wm-project-management-app:serve:production"
+              "devServerTarget": "wm-project-management-system:serve:production"
             }
           }
         },
@@ -123,5 +123,10 @@
       }
     }
   },
-  "defaultProject": "wm-project-management-app"
+  "defaultProject": "wm-project-management-system",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
+  }
 }
