@@ -61,9 +61,9 @@ export class OpenRequirementsFormComponent implements OnInit {
   ngOnInit() {  }
 
 
-  onProjectSelect(event2: any) {
+  onProjectSelect(event: any) {
     this.openRequirementForm.patchValue({
-      projectId: event2
+      projectId: event
     });
   }
 
