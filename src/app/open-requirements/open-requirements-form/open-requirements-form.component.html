@@ -44,12 +44,13 @@
                         <mat-form-field class="form-group" appearance="outline">
                             <mat-label>Project Details</mat-label>
                             <mat-select class="form-control" formControlName="projectName" placeholder="Project Details"
-                                required>
-                                <mat-option *ngFor="let project of projects" [value]="project.projectName">
+                                required >
+                                <mat-option *ngFor="let project of projects" [value]="project.projectName" (onSelectionChange)="onProjectSelect(project.projectId)">
                                     {{project.projectId}} - {{project.projectName}}
                                 </mat-option>
                             </mat-select>
                         </mat-form-field>
+                        <input type="hidden" formControlName="projectId" [value]="this.projId"/>
                     </div>
                 </div>
                 <div fxFlex="24%" fxFlexFill>

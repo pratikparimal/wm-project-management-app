@@ -27,6 +27,8 @@ export class OpenRequirementsFormComponent implements OnInit {
 
   openRequirementData: OpenRequirementFormModel;
 
+  projId: any;
+
   constructor(private fb: FormBuilder,
     public dialogRef: MatDialogRef<OpenRequirementsFormComponent>,
     @Inject(MAT_DIALOG_DATA) public data: OpenRequirementFormModel,
@@ -54,10 +56,16 @@ export class OpenRequirementsFormComponent implements OnInit {
         closureComment: ['']
       });
 
-
     }
 
   ngOnInit() {  }
+
+
+  onProjectSelect(event2: any) {
+    this.openRequirementForm.patchValue({
+      projectId: event2
+    });
+  }
 
   putOpenRequirementData() {
     this._openRequirementService.putOpenRequirementData(this.openRequirementData);
