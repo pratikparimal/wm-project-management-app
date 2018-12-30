@@ -1,42 +1,42 @@
 {
-  "openRequirementData": [
-      {
-          "soLineItemID": "001",
-          "ownerName": "PP",
-          "domainName": "Retail",
-          "groupName": "WM-FIN",
-          "projectId": 10223,
-          "projectName": "WM_RET_PROJECT",
-          "winzoneId": 123,
-          "winzoneOpportunity": "Yes",
-          "locationName": "Offshore",
-          "opportunityIdentifiedDate": null,
-          "billStartDate": null,
-          "currStatus": "Open",
-          "pipelineCount": "0",
-          "forecastType": "Most Likely",
-          "filledInternally": "Yes",
-          "requirementComment": "Needy",
-          "closureComment": "Thank U"
-      },
-      {
-          "soLineItemID": "002",
-          "ownerName": "SS",
-          "domainName": "Retail",
-          "groupName": "WM-RPN",
-          "projectId": 1022300,
-          "projectName": "WM_RPN_PROJECT",
-          "winzoneId": 123456,
-          "winzoneOpportunity": "Yes",
-          "locationName": "Offshore",
-          "opportunityIdentifiedDate": null,
-          "billStartDate": null,
-          "currStatus": "Open",
-          "pipelineCount": "0",
-          "forecastType": "Most Likely",
-          "filledInternally": "Yes",
-          "requirementComment": "Needy",
-          "closureComment": "Thank U"
-      }
-  ]
+    "openRequirementData": [
+        {
+            "soLineItemID": "001",
+            "ownerName": "PP",
+            "domainName": "Retail",
+            "groupName": "WM-FIN",
+            "projectId": 10223,
+            "projectName": "WM_RET_PROJECT",
+            "winzoneId": 123,
+            "winzoneOpportunity": "Yes",
+            "locationName": "Offshore",
+            "opportunityIdentifiedDate": null,
+            "billStartDate": null,
+            "currStatus": "Open",
+            "pipelineCount": "0",
+            "forecastType": "Most Likely",
+            "filledInternally": "Yes",
+            "requirementComment": "Needy",
+            "closureComment": "Thank U"
+        },
+        {
+            "soLineItemID": "002",
+            "ownerName": "SS",
+            "domainName": "Retail",
+            "groupName": "WM-RPN",
+            "projectId": 1022300,
+            "projectName": "WM_RPN_PROJECT",
+            "winzoneId": 123456,
+            "winzoneOpportunity": "Yes",
+            "locationName": "Offshore",
+            "opportunityIdentifiedDate": null,
+            "billStartDate": null,
+            "currStatus": "Open",
+            "pipelineCount": "0",
+            "forecastType": "Most Likely",
+            "filledInternally": "Yes",
+            "requirementComment": "Needy",
+            "closureComment": "Thank U"
+        }
+    ]
 }

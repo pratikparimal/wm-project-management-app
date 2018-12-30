@@ -11,13 +11,16 @@ import OPEN_REQUIREMENT_DATA from 'src/app/data/openRequirementTableData';
 })
 export class OpenRequirementsViewComponent implements OnInit {
 
+  errorMessage: string;
+  dataSource: OpenRequirementFormModel[] = [];
+
   // DATASOURCE: any[] = this._openRequirementService.getOpenRequirementAllData();
   // dataSource = new MatTableDataSource(this.DATASOURCE);
 
   // dataSource = OPEN_REQUIREMENT_DATA;
 
-  DATASOURCE: any[] = this._openRequirementService.getOpenRequirementAllData();
-  dataSource = this.DATASOURCE;
+  // DATASOURCE: any[] = this._openRequirementService.getOpenRequirementAllData();
+  // dataSource = this.DATASOURCE;
 
 
   displayedColumns = [
@@ -37,14 +40,19 @@ export class OpenRequirementsViewComponent implements OnInit {
     'forecastType',
     'filledInternally',
     'requirementComment',
-    'closureComment'
+    'closureComment',
+    'updateRow',
+    'deleteRow'
   ];
 
 
   constructor(private _openRequirementService: OpenRequirementService) {  }
 
   ngOnInit() {
-    console.log(this.dataSource);
+    this._openRequirementService.getOpenRequirementAllData().subscribe(
+      dataSource => this.dataSource = dataSource
+      // error => this.errorMessage = <any>error
+    );
    }
 
 }
