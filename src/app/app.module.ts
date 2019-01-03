@@ -5,6 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -19,6 +20,7 @@ import { OpenRequirementsViewComponent } from './open-requirements/open-requirem
 import { OpenRequirementsFormComponent } from './open-requirements/open-requirements-form/open-requirements-form.component';
 import { OpenRequirementService } from './service/open-requirement-service.service';
 import { ResourceDetailsComponent } from './resource-details/resource-details.component';
+import { OpenRequirementData } from './open-requirements/open-requirement-api-data/openRequirementData';
 
 
 @NgModule({
@@ -41,7 +43,8 @@ import { ResourceDetailsComponent } from './resource-details/resource-details.co
     MaterialModule,
     FlexLayoutModule,
     FlexModule,
-    HttpClientModule
+    HttpClientModule,
+    InMemoryWebApiModule.forRoot(OpenRequirementData),
   ],
   entryComponents: [OpenRequirementsFormComponent, ResourceUploadComponent],
   providers: [MatDatepickerModule, OpenRequirementService],

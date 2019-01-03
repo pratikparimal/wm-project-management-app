@@ -2,7 +2,7 @@ import { OpenRequirementFormModel } from '../open-requirements/openRequirementCl
 
 const OPEN_REQUIREMENT_DATA: OpenRequirementFormModel[] = [
     {
-      soLineItemID : '001',
+      soLineItemID : 1,
       ownerName : 'PP',
       domainName : 'Retail',
       groupName : 'WM-FIN',
@@ -21,7 +21,7 @@ const OPEN_REQUIREMENT_DATA: OpenRequirementFormModel[] = [
       closureComment : 'Thank U'
     },
     {
-        soLineItemID : '002',
+        soLineItemID : 2,
         ownerName : 'DK',
         domainName : 'Retail',
         groupName : 'WM-AVM',

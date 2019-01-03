@@ -11,13 +11,20 @@ import { OpenRequirementFormModel } from './../open-requirements/openRequirement
 })
 export class OpenRequirementService {
 
+  private dataUrl = 'api/requirements';
+
+  constructor(private http: HttpClient) { }
+
   openRequirementDataArray: OpenRequirementFormModel[] = [];
   openRequirementData: OpenRequirementFormModel;
 
-  private dataUrl = 'http://localhost:3000/openRequirementData';
-  // private dataUrl = 'api/data/openRequirementDataSet.json';
-
-  constructor(private http: HttpClient) { }
+  // getAllOpenRequirementData(): Observable<OpenRequirementFormModel[]> {
+  //   return this.http.get<OpenRequirementFormModel[]>(this.dataUrl)
+  //     .pipe(
+  //       tap(data => console.log('All : ' + JSON.stringify(data))),
+  //       catchError(this.handleError)
+  //     );
+  // }
 
   putOpenRequirementData(data: OpenRequirementFormModel) {
     this.openRequirementData = data;
@@ -29,13 +36,11 @@ export class OpenRequirementService {
   //   return (this.openRequirementDataArray);
   // }
 
-  getOpenRequirementAllData(): Observable<OpenRequirementFormModel[]> {
-    return of(this.openRequirementDataArray);
-  }
+  // getOpenRequirementAllData(): Observable<OpenRequirementFormModel[]> {
+  //   return of(this.openRequirementDataArray);
+  // }
 
-  /*
-  getOpenRequirementAllData(): Observable<OpenRequirementFormModel[]> {
-    // return of(this.openRequirementDataArray);
+  getAllOpenRequirementData(): Observable<OpenRequirementFormModel[]> {
     return this.http.get<OpenRequirementFormModel[]>(this.dataUrl).pipe(
       tap(data => console.log('All : ' + JSON.stringify(data))),
       catchError(this.handleError)
@@ -53,7 +58,6 @@ export class OpenRequirementService {
     return throwError(errorMessage);
   }
 
-  */
 
   printFn() {
     console.log('During Service printFn() call');

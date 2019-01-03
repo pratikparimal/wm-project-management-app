@@ -11,8 +11,11 @@ import OPEN_REQUIREMENT_DATA from 'src/app/data/openRequirementTableData';
 })
 export class OpenRequirementsViewComponent implements OnInit {
 
+  constructor(private _openRequirementService: OpenRequirementService) {  }
+
   errorMessage: string;
   dataSource: OpenRequirementFormModel[] = [];
+  dataSources: MatTableDataSource<any>;
 
   // DATASOURCE: any[] = this._openRequirementService.getOpenRequirementAllData();
   // dataSource = new MatTableDataSource(this.DATASOURCE);
@@ -46,13 +49,30 @@ export class OpenRequirementsViewComponent implements OnInit {
   ];
 
 
-  constructor(private _openRequirementService: OpenRequirementService) {  }
-
   ngOnInit() {
-    this._openRequirementService.getOpenRequirementAllData().subscribe(
-      dataSource => this.dataSource = dataSource
-      // error => this.errorMessage = <any>error
+    this._openRequirementService.getAllOpenRequirementData()
+    .subscribe(
+      dataS => this.dataSources = new MatTableDataSource(dataS),
+      error => this.errorMessage = <any>error
     );
-   }
+    // console.log('Length of dataSource : ' + this.dataSource.length);
 
+
+  //   this.dataSource = this._openRequirementService.getOpenRequirementAllData();
+  //   console.log('Length of dataSource : ' + this.dataSource.length);
+  //  }
+
+  }
+
+  editRequirementData(soLineItemID: number) {
+    console.log('Update Function for : ' + soLineItemID);
+  }
+
+  deleteRequirementData(soLineItemID: number) {
+    console.log('Delete Function for : ' + soLineItemID);
+  }
+
+  applyFilter(filterValue: string) {
+    this.dataSources.filter = filterValue.trim().toLowerCase();
+  }
 }

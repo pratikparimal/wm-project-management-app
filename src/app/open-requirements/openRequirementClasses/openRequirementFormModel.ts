@@ -10,7 +10,7 @@ export class OpenRequirementFormModel {
     locationName: string;
     billStartDate: Date;
     currStatus: string;
-    soLineItemID: string;
+    soLineItemID: number;
     pipelineCount: string;
     requirementComment: string;
     forecastType: string;
