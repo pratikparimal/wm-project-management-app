@@ -1,3 +1,26 @@
+.resourceDetails{
+    padding-top: 30px;
+    width: 100%;
+    text-align: center;
+    font-size: 40px;
+   // font-style: bold;
+}
+
+.resource-details-body{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    flex: 1;
+}
+
+.add-requirement-button-container{
+    padding-right: 15px;
+    float: right;
+    text-align: right;
+    padding-bottom: 15px;
+}
+
 .toolbar {
     color: blue;
 
@@ -11,12 +34,20 @@ table {
       width: 100%;
   }
 
-  .resourceDetails{
-      width: 100%;
-      text-align: center;
-      color: green;
+  .button2{
+      float: right;
   }
 
-  .button2{
+  .resource-search-form-container{
+      display:flex;
+      width: 100%;
       text-align: center;
+      flex-direction: column;
   }
+  
+
+
+
+.submit-resource-button{
+    text-align: center;
+}

@@ -1,8 +1,8 @@
 import { InMemoryDbService } from 'angular-in-memory-web-api';
 
 import { OpenRequirementFormModel } from '../openRequirementClasses/openRequirementFormModel';
-
-export class OpenRequirementData implements InMemoryDbService {
+/*
+export class OpenRequirementData implements InMemoryDbService{
 
   createDb() {
     const requirements: OpenRequirementFormModel[] = [
@@ -67,3 +67,4 @@ export class OpenRequirementData implements InMemoryDbService {
     return { requirements };
   }
 }
+*/

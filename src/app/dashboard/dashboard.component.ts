@@ -30,6 +30,4 @@ export class DashboardComponent implements OnInit {
     return this.mediaMatcher.matches;
   }
 
-  
-
 }

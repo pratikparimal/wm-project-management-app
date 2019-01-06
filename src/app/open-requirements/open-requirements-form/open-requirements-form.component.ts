@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, EventEmitter, Output, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
 import { FlexLayoutModule, FlexModule } from '@angular/flex-layout';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatSnackBar} from '@angular/material';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
 
 import { DOMAINS } from '../openRequirementJSONData/mock-domain';
 import { PROJECTS } from '../openRequirementJSONData/mock-project';
@@ -26,7 +26,7 @@ export class OpenRequirementsFormComponent implements OnInit {
   groups = GROUPS;
 
   openRequirementData: OpenRequirementFormModel;
-
+  errorMessage: string;
   projId: any;
 
   constructor(private fb: FormBuilder,
@@ -36,29 +36,34 @@ export class OpenRequirementsFormComponent implements OnInit {
     public snackBar: MatSnackBar) {
 
 
-      this.openRequirementForm = this.fb.group({
-        domainName: [''],
-        ownerName: [''],
-        winzoneId: [''],
-        winzoneOpportunity: [''],
-        opportunityIdentifiedDate: [''],
-        projectId: [''],
-        projectName: [''],
-        groupName: [''],
-        locationName: [''],
-        billStartDate: [''],
-        currStatus: [''],
-        soLineItemID: [''],
-        pipelineCount: [''],
-        requirementComment: [''],
-        forecastType: [''],
-        filledInternally: [''],
-        closureComment: ['']
-      });
+    this.openRequirementForm = this.fb.group({
+      domainName: [''],
+      ownerName: [''],
+      winzoneId: [''],
+      winzoneOpportunity: [''],
+      opportunityIdentifiedDate: [''],
+      projectId: [''],
+      projectName: [''],
+      groupName: [''],
+      locationName: [''],
+      billStartDate: [''],
+      currStatus: [''],
+      soLineItemID: [''],
+      profilesInEvaluation: [''],
+      requirementComment: [''],
+      forecastType: [''],
+      filledInternally: [''],
+      closureComment: [''],
+      skillset: [''],
+      billEndDate: [''],
+      rate: [''],
+      revenue: [''],
+      soCreatedDate: [''],
+    });
 
-    }
+  }
 
-  ngOnInit() {  }
+  ngOnInit() { }
 
 
   onProjectSelect(event: any) {
@@ -67,27 +72,48 @@ export class OpenRequirementsFormComponent implements OnInit {
     });
   }
 
-  putOpenRequirementData() {
-    this._openRequirementService.putOpenRequirementData(this.openRequirementData);
-  }
-
-
-  onOpenRequirementFormSubmit() {
+  onOpenRequirementFormSubmit(openRequirementData: OpenRequirementFormModel): void {
     if (this.openRequirementForm.valid) {
-      console.log('During form submit');
-      console.log(this.openRequirementForm.value);
-      this.openRequirementData = this.openRequirementForm.value;
-      this.putOpenRequirementData();
-      this.openRequirementForm.reset();
+      console.log(openRequirementData);
+      this.openRequirementData = openRequirementData;
+      const reqData: OpenRequirementFormModel = openRequirementData;
+      console.log('just check');
+      console.log(openRequirementData);
+      console.log(reqData);
+      this._openRequirementService.createOpenRequirementData(openRequirementData)
+        .subscribe(
+          () => this.onSaveComplete(),
+          (error: any) => this.errorMessage = <any>error
+        );
       this.snackBar.open('Open Requirement Added Successfully', '', { duration: 2000, });
       this.dialogRef.close();
     }
   }
 
-  onSubmit() {
-    this.openRequirementForm.patchValue({
-      soLineItemID: '000'
-    });
+  // saveOpenRequirementData(requirement: OpenRequirementFormModel) {
+  //   console.log('In save function: ' + requirement);
+  //   this._openRequirementService.createOpenRequirementData(requirement)
+  //     .subscribe(
+  //       () => this.onSaveComplete(),
+  //       (error: any) => this.errorMessage = <any>error
+  //     );
+  // }
+
+  onSaveComplete() {
+    this.openRequirementForm.reset();
+  }
+
+  onSubmit(value: OpenRequirementFormModel) {
+    if (this.openRequirementForm.valid) {
+      console.log('in func submit : ' + value);
+    }
+    // const reqData: OpenRequirementFormModel = this.print(this);
+    console.log('On Submit 1' + this.openRequirementForm.value.projectName);
+    console.log('On Submit' + value.projectName);
+  }
+
+  print(data: any) {
+    console.log(data);
   }
 
   formCloseButton() {
@@ -95,3 +121,4 @@ export class OpenRequirementsFormComponent implements OnInit {
   }
 
 }
+

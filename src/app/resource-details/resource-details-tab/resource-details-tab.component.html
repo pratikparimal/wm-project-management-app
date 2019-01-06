@@ -1,0 +1,124 @@
+<div>
+  <mat-card class="resource-details">
+    <mat-card-content>
+
+      <div fxFlex="100%" fxFlexFill>
+        <mat-form-field>
+          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Resource ID">
+        </mat-form-field>
+        <table mat-table [dataSource]="dataSources" class="mat-elevation-z8" matSort>
+
+          <ng-container matColumnDef="groupName">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Group Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.groupName}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="domainName">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Domain Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.domainName}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="ownerName">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Owner Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.ownerName}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="cogId">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Cognizant ID </th>
+            <td mat-cell *matCellDef="let element"> {{element.cogId}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="wmId">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Walmart ID </th>
+            <td mat-cell *matCellDef="let element"> {{element.wmId}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="fgWorkId">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> FG Work ID </th>
+            <td mat-cell *matCellDef="let element"> {{element.fgWorkId}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="fgContract">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> FG Contract </th>
+            <td mat-cell *matCellDef="let element"> {{element.fgContract}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="billability">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Billability </th>
+            <td mat-cell *matCellDef="let element"> {{element.billability}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="allocation">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Allocation(in %) </th>
+            <td mat-cell *matCellDef="let element"> {{element.allocation}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="location">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Location </th>
+            <td mat-cell *matCellDef="let element"> {{element.location}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="pickerStart">
+            <th mat-header-cell *matHeaderCellDef> Allocation Start Date </th>
+            <td mat-cell *matCellDef="let element"> {{element.pickerStart}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="pickerEnd">
+            <th mat-header-cell *matHeaderCellDef> Allocation End Date </th>
+            <td mat-cell *matCellDef="let element"> {{element.pickerEnd}} </td>
+          </ng-container>
+
+          <!-- <ng-container matColumnDef="updateRow" stickyEnd>
+              <th mat-header-cell *matHeaderCellDef> Update </th>
+              <td mat-cell *matCellDef="let element">
+                <button mat-button (click)="editRequirementData(element.soLineItemID)">
+                  <mat-icon>edit</mat-icon>
+                </button>
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="deleteRow" stickyEnd>
+              <th mat-header-cell *matHeaderCellDef> Delete </th>
+              <td mat-cell *matCellDef="let element">
+                <button mat-button (click)="deleteRequirementData(element.soLineItemID)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </td>
+            </ng-container> -->
+
+          <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef></mat-header-cell>
+            <mat-cell *matCellDef="let row">
+              <button mat-icon-button>
+                <mat-icon>launch</mat-icon>
+              </button>
+              <button mat-icon-button color="warn">
+                <mat-icon>delete_outline</mat-icon>
+              </button>
+            </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="loading">
+            <mat-footer-cell *matFooterCellDef colspan="6">
+              Loading data...
+            </mat-footer-cell>
+          </ng-container>
+          <ng-container matColumnDef="noData">
+            <mat-footer-cell *matFooterCellDef colspan="6">
+              No data.
+            </mat-footer-cell>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          <mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide':dataSources!=null}"></mat-footer-row>
+          <mat-footer-row *matFooterRowDef="['noData']" [ngClass]="{'hide':!(dataSources!=null && dataSources.data.length==0)}"></mat-footer-row>
+
+        </table>
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="5" showFirstLastButtons></mat-paginator>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

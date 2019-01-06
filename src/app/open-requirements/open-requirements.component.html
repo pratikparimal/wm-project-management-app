@@ -1,7 +1,7 @@
 <div class="mat-typography open-requirement-container">
   <div class="open-requirement-header">
     <h2 class="open-requirement-headerline">Open Requirements
-      <hr>
+      <!-- <hr> -->
     </h2>
   </div>
   <div class="open-requirement-body">
@@ -11,11 +11,25 @@
           <mat-icon>add_box</mat-icon>
           Add Requirement
         </button>
+        <!-- <button mat-icon-button>
+          <img src="https://cdn.iconscout.com/icon/free/png-256/excel-1-129882.png" alt="export to excel" >
+        </button> -->
       </div>
-    <br>
+      <br>
     </div>
-    <div class="open-requirement-view-body">
-      <app-open-requirements-view></app-open-requirements-view>
+    <div>
+      <mat-tab-group dynamicHeight>
+        <mat-tab label="Requirements Search">
+          <div class="open-requirement-search-body">
+            <app-open-requirements-search></app-open-requirements-search>
+          </div>
+        </mat-tab>
+        <mat-tab label="Requirements Details">
+          <div class="open-requirement-view-body">
+            <app-open-requirements-view></app-open-requirements-view>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
     </div>
   </div>
 </div>

@@ -8,8 +8,7 @@
             </button>
         </span>
     </div>
-    <form (ngSubmit)="onOpenRequirementFormSubmit()" [formGroup]="openRequirementForm" class="open-requirement-form"
-        mat-dialog-content>
+    <form (ngSubmit)="onOpenRequirementFormSubmit(openRequirementForm.value)" [formGroup]="openRequirementForm" class="open-requirement-form" mat-dialog-content>
         <div class="mat-typography parent-flex-container">
             <div fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutWrap fxLayoutGap="1%" fxLayoutAlign="space-between center"
                 class="child-flex-container">
@@ -21,19 +20,6 @@
                                 required>
                                 <mat-option *ngFor="let domain of domains" [value]="domain.domainName">
                                     {{domain.domainName}}
-                                </mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                    </div>
-                </div>
-                <div fxFlex="24%" fxFlexFill>
-                    <div class="controles-container">
-                        <mat-form-field class="form-group" appearance="outline">
-                            <mat-label>Group Name</mat-label>
-                            <mat-select class="form-control" formControlName="groupName" placeholder="Group Name"
-                                required>
-                                <mat-option *ngFor="let group of groups" [value]="group.groupName">
-                                    {{group.groupName}}
                                 </mat-option>
                             </mat-select>
                         </mat-form-field>
@@ -62,15 +48,28 @@
                         </mat-form-field>
                     </div>
                 </div>
+                <div fxFlex="24%" fxFlexFill>
+                    <div class="controles-container">
+                        <mat-form-field class="form-group" appearance="outline">
+                            <mat-label>Group Name</mat-label>
+                            <mat-select class="form-control" formControlName="groupName" placeholder="Group Name"
+                                required>
+                                <mat-option *ngFor="let group of groups" [value]="group.groupName">
+                                    {{group.groupName}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
             </div>
             <div fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutWrap fxLayoutGap="1%" fxLayoutAlign="space-between center"
                 class="child-flex-container">
                 <div fxFlex="24%" fxFlexFill>
                     <div class="controles-container">
                         <mat-form-field class="form-group" appearance="outline">
-                            <mat-label>SO# Line Item</mat-label>
+                            <mat-label>SO# Line Item ID</mat-label>
                             <input matInput class="form-control" formControlName="soLineItemID" placeholder="SO# Line Item"
-                                type="text" required />
+                                type="number" required />
                         </mat-form-field>
                     </div>
                 </div>
@@ -79,7 +78,7 @@
                         <mat-form-field class="form-group" appearance="outline">
                             <mat-label>Winzone Id</mat-label>
                             <input matInput class="form-control" formControlName="winzoneId" placeholder="Winzone ID"
-                                type="text" required />
+                                type="number" required />
                         </mat-form-field>
                     </div>
                 </div>
@@ -109,6 +108,15 @@
                 <div fxFlex="24%" fxFlexFill>
                     <div class="controles-container">
                         <mat-form-field class="form-group" appearance="outline">
+                            <mat-label>Skillset</mat-label>
+                            <input matInput class="form-control" formControlName="skillset" placeholder="Skillset"
+                                type="text" />
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div fxFlex="24%" fxFlexFill>
+                    <div class="controles-container">
+                        <mat-form-field class="form-group" appearance="outline">
                             <mat-label>Location</mat-label>
                             <mat-select class="form-control" formControlName="locationName" placeholder="Location"
                                 required>
@@ -132,6 +140,38 @@
                 <div fxFlex="24%" fxFlexFill>
                     <div class="controles-container">
                         <mat-form-field class="form-group" appearance="outline">
+                            <mat-label>Billing End Date</mat-label>
+                            <input class="form-control" matInput [matDatepicker]="pickerBillEndDate" placeholder="Billing End Date"
+                                formControlName="billEndDate" />
+                            <mat-datepicker-toggle matSuffix [for]="pickerBillEndDate"></mat-datepicker-toggle>
+                            <mat-datepicker #pickerBillEndDate></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+            <div fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutWrap fxLayoutGap="1%" fxLayoutAlign="space-between center"
+                class="child-flex-container">
+                <div fxFlex="24%" fxFlexFill>
+                    <div class="controles-container">
+                        <mat-form-field class="form-group" appearance="outline">
+                            <mat-label>Rate</mat-label>
+                            <input matInput class="form-control" formControlName="rate" placeholder="Rate"
+                                type="number" />
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div fxFlex="24%" fxFlexFill>
+                    <div class="controles-container">
+                        <mat-form-field class="form-group" appearance="outline">
+                            <mat-label>Revenue</mat-label>
+                            <input matInput class="form-control" formControlName="revenue" placeholder="Revenue"
+                                type="text" />
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div fxFlex="24%" fxFlexFill>
+                    <div class="controles-container">
+                        <mat-form-field class="form-group" appearance="outline">
                             <mat-label>Current Status</mat-label>
                             <mat-select class="form-control" formControlName="currStatus" placeholder="Current Status"
                                 required>
@@ -145,8 +185,8 @@
                 <div fxFlex="24%" fxFlexFill>
                     <div class="controles-container">
                         <mat-form-field class="form-group" appearance="outline">
-                            <mat-label>Pipeline</mat-label>
-                            <input matInput class="form-control" formControlName="pipelineCount" placeholder="Pipiline"
+                            <mat-label>Profiles In Evaluation</mat-label>
+                            <input matInput class="form-control" formControlName="profilesInEvaluation" placeholder="Profiles In Evaluation"
                                 type="text" />
                         </mat-form-field>
                     </div>
@@ -154,6 +194,17 @@
             </div>
             <div fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutWrap fxLayoutGap="1%" fxLayoutAlign="space-between center"
                 class="child-flex-container">
+                <div fxFlex="24%" fxFlexFill>
+                    <div class="controles-container">
+                        <mat-form-field class="form-group" appearance="outline">
+                            <mat-label>SO Created Date</mat-label>
+                            <input class="form-control" matInput [matDatepicker]="pickerSODate" placeholder="SO Created Date"
+                                formControlName="soCreatedDate" />
+                            <mat-datepicker-toggle matSuffix [for]="pickerSODate"></mat-datepicker-toggle>
+                            <mat-datepicker #pickerSODate></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+                </div>
                 <div fxFlex="24%" fxFlexFill>
                     <div class="controles-container">
                         <mat-form-field class="form-group text-area-control" appearance="outline">
@@ -187,6 +238,18 @@
                         </mat-form-field>
                     </div>
                 </div>
+                <!-- <div fxFlex="24%" fxFlexFill>
+                    <div class="controles-container">
+                        <mat-form-field class="form-group text-area-control" appearance="outline">
+                            <mat-label>Closure Comments</mat-label>
+                            <textarea matInput class="form-control" formControlName="closureComment" placeholder="Closure Comments/Details"
+                                type="text"></textarea>
+                        </mat-form-field>
+                    </div>
+                </div> -->
+            </div>
+            <div fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutWrap fxLayoutGap="1%" fxLayoutAlign="space-between center"
+                class="child-flex-container">
                 <div fxFlex="24%" fxFlexFill>
                     <div class="controles-container">
                         <mat-form-field class="form-group text-area-control" appearance="outline">
@@ -198,7 +261,7 @@
                 </div>
             </div>
             <div class="form-submit-button">
-                <button mat-flat-button color="primary" type="submit" (click)="onSubmit()">Submit</button>
+                <button mat-flat-button color="primary" type="submit" (click)="onSubmit(openRequirementForm.value)">Submit</button>
                 <br>
             </div>
         </div>

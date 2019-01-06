@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { OpenRequirementService } from 'src/app/service/open-requirement-service.service';
 import { OpenRequirementFormModel } from '../openRequirementClasses/openRequirementFormModel';
-import { MatTableDataSource } from '@angular/material';
-import OPEN_REQUIREMENT_DATA from 'src/app/data/openRequirementTableData';
+import { MatTableDataSource, MatSort, MatPaginator, MatDialog } from '@angular/material';
+import { OpenRequirementsEditComponent } from '../open-requirements-edit/open-requirements-edit.component';
 
 @Component({
   selector: 'app-open-requirements-view',
@@ -11,68 +11,66 @@ import OPEN_REQUIREMENT_DATA from 'src/app/data/openRequirementTableData';
 })
 export class OpenRequirementsViewComponent implements OnInit {
 
-  constructor(private _openRequirementService: OpenRequirementService) {  }
-
   errorMessage: string;
-  dataSource: OpenRequirementFormModel[] = [];
-  dataSources: MatTableDataSource<any>;
+  dataSource: MatTableDataSource<any>;
 
-  // DATASOURCE: any[] = this._openRequirementService.getOpenRequirementAllData();
-  // dataSource = new MatTableDataSource(this.DATASOURCE);
-
-  // dataSource = OPEN_REQUIREMENT_DATA;
-
-  // DATASOURCE: any[] = this._openRequirementService.getOpenRequirementAllData();
-  // dataSource = this.DATASOURCE;
+  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
 
   displayedColumns = [
     'soLineItemID',
     'ownerName',
     'domainName',
-    'groupName',
     'projectId',
     'projectName',
+    'groupName',
     'winzoneId',
     'winzoneOpportunity',
+    'skillset',
     'locationName',
     'opportunityIdentifiedDate',
     'billStartDate',
+    'billEndDate',
+    'rate',
+    'revenue',
     'currStatus',
-    'pipelineCount',
+    'profilesInEvaluation',
+    'soCreatedDate',
     'forecastType',
     'filledInternally',
     'requirementComment',
     'closureComment',
-    'updateRow',
-    'deleteRow'
+    'actionRow'
   ];
 
+  constructor(private _openRequirementService: OpenRequirementService,
+    public dialog: MatDialog) {  }
 
   ngOnInit() {
-    this._openRequirementService.getAllOpenRequirementData()
-    .subscribe(
-      dataS => this.dataSources = new MatTableDataSource(dataS),
+    this._openRequirementService.getAllOpenRequirementData().subscribe(
+      dataSource => {
+        this.dataSource = new MatTableDataSource(dataSource);
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
+      },
       error => this.errorMessage = <any>error
     );
-    // console.log('Length of dataSource : ' + this.dataSource.length);
+  }
 
-
-  //   this.dataSource = this._openRequirementService.getOpenRequirementAllData();
-  //   console.log('Length of dataSource : ' + this.dataSource.length);
-  //  }
-
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   editRequirementData(soLineItemID: number) {
     console.log('Update Function for : ' + soLineItemID);
+    const dialogRef = this.dialog.open(OpenRequirementsEditComponent, {
+      data: {}
+    });
   }
 
   deleteRequirementData(soLineItemID: number) {
     console.log('Delete Function for : ' + soLineItemID);
-  }
-
-  applyFilter(filterValue: string) {
-    this.dataSources.filter = filterValue.trim().toLowerCase();
+    alert('Do you want to delete record for ' + soLineItemID);
   }
 }

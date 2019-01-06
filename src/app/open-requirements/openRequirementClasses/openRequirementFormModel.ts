@@ -3,19 +3,24 @@ export class OpenRequirementFormModel {
     ownerName: string;
     winzoneId: number;
     winzoneOpportunity: string;
-    opportunityIdentifiedDate: Date;
+    opportunityIdentifiedDate: string;
     projectId: number;
     projectName: string;
     groupName: string;
     locationName: string;
-    billStartDate: Date;
+    billStartDate: string;
     currStatus: string;
     soLineItemID: number;
-    pipelineCount: string;
+    profilesInEvaluation: string;
     requirementComment: string;
     forecastType: string;
     filledInternally: string;
     closureComment: string;
+    skillset: string;
+    billEndDate: string;
+    rate: number;
+    revenue: string;
+    soCreatedDate: string;
 
 
     // constructor(

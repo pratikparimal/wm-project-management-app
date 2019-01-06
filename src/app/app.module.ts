@@ -10,7 +10,7 @@ import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { OpenRequirementsComponent } from './open-requirements/open-requirements.component';
-import { ResourceUploadComponent } from './resource-upload/resource-upload.component';
+
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AppRoutingModule } from './app-routing.module';
 import { MaterialModule } from './material.module';
@@ -21,7 +21,14 @@ import { OpenRequirementsFormComponent } from './open-requirements/open-requirem
 import { OpenRequirementService } from './service/open-requirement-service.service';
 import { ResourceDetailsComponent } from './resource-details/resource-details.component';
 import { OpenRequirementData } from './open-requirements/open-requirement-api-data/openRequirementData';
+import { ResourceDetailsTabComponent } from './resource-details/resource-details-tab/resource-details-tab.component';
+import { ResourceDetailsData } from './resource-details/resource-details-api-data/resourceDetailsData';
 
+import { AllDataAPI } from './shared/data-api/AllDataAPI';
+import { ResourceUploadComponent } from './resource-details/resource-upload/resource-upload.component';
+import { AdminPageComponent } from './admin-page/admin-page.component';
+import { OpenRequirementsSearchComponent } from './open-requirements/open-requirements-search/open-requirements-search.component';
+import { OpenRequirementsEditComponent } from './open-requirements/open-requirements-edit/open-requirements-edit.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +39,11 @@ import { OpenRequirementData } from './open-requirements/open-requirement-api-da
     ResourceDetailsComponent,
     PageNotFoundComponent,
     OpenRequirementsViewComponent,
-    OpenRequirementsFormComponent
+    OpenRequirementsFormComponent,
+    ResourceDetailsTabComponent,
+    AdminPageComponent,
+    OpenRequirementsSearchComponent,
+    OpenRequirementsEditComponent
   ],
   imports: [
     BrowserModule,
@@ -44,10 +55,14 @@ import { OpenRequirementData } from './open-requirements/open-requirement-api-da
     FlexLayoutModule,
     FlexModule,
     HttpClientModule,
-    InMemoryWebApiModule.forRoot(OpenRequirementData),
+    InMemoryWebApiModule.forRoot(AllDataAPI)
   ],
-  entryComponents: [OpenRequirementsFormComponent, ResourceUploadComponent],
-  providers: [MatDatepickerModule, OpenRequirementService],
+  entryComponents: [
+    OpenRequirementsFormComponent,
+    ResourceUploadComponent,
+    OpenRequirementsEditComponent
+  ],
+  providers: [MatDatepickerModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

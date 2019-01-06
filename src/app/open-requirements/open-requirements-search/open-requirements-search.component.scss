@@ -1,0 +1,159 @@
+.open-requirement-search-form-container{
+    display: flex;
+    flex-direction: row;
+}
+
+.open-requirement-search-form{
+    display:flex;
+    width: 100%;
+    text-align: center;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.open-requirement-search-form{
+  padding-right: 20px;
+  flex: 1;
+}
+
+.open-requirement-search-form >*{
+  padding: 5px;
+  margin: 2px;
+}
+
+.child-flex-container{
+  flex:1;
+}
+
+.controles-container > * {
+  width: 95%;
+}
+
+.open-requirement-table-view-container {
+    overflow-y: hidden;
+    overflow-x: auto;
+    width: 99%;
+  }
+  
+  mat-card{
+    width: 3400px;
+    
+  }
+  
+  
+  table {
+    width: 3400px;
+    overflow-y: hidden;
+    overflow-x: auto;
+  }
+  
+  
+  mat-form-field{
+    width: 300px;
+  }
+  
+  th.mat-column-soLineItemID {
+    width: 120px;
+  }
+  th.mat-column-ownerName {
+    width: 150px;
+  }
+  th.mat-column-domainName {
+    width: 110px;
+  }
+  th.mat-column-groupName {
+    width: 125px;
+  }
+  th.mat-column-projectId {
+    width: 120px;
+  }
+  th.mat-column-projectName {
+    width: 225px;
+  }
+  th.mat-column-winzoneId {
+    width: 100px;
+  }
+  th.mat-column-winzoneOpportunity {
+    width: 200px;
+  }
+  th.mat-column-locationName {
+    width: 100px;
+  }
+  th.mat-column-skillset {
+    width: 150px;
+  }
+  th.mat-column-opportunityIdentifiedDate {
+    width: 175px;
+  }
+  th.mat-column-billStartDate {
+    width: 125px;
+  }
+  th.mat-column-billEndDate {
+    width: 125px;
+  }
+  th.mat-column-rate {
+    width: 75px;
+  }
+  th.mat-column-revenue {
+    width: 75px;
+  }
+  th.mat-column-currStatus {
+    width: 100px;
+  }
+  th.mat-column-profilesInEvaluation {
+    width: 135px;
+  }
+  th.mat-column-soCreatedDate {
+    width: 125px;
+  }
+  th.mat-column-forecastType {
+    width: 100px;
+  }
+  th.mat-column-filledInternally {
+    width: 100px;
+  }
+  th.mat-column-requirementComment {
+    width: 300px;
+  }
+  th.mat-column-closureComment {
+    width: 300px;
+  }
+  td.mat-column-requirementComment {
+    width: 275px;
+  }
+  
+  th.mat-header-cell{
+    padding-left: 10px;
+  }
+  
+  .mat-cell{
+    padding-left: 10px;
+  }
+  
+  td.mat-column-actionRow {
+    // width: 50px;
+  }
+  
+  .mat-table-sticky {
+    border-left: 1px solid #e0e0e0;
+  }
+  
+  th.mat-column-actionRow {
+    text-align: center;
+  }
+  
+  // mat-paginator{
+  //   position: ;
+  //   right: 0px;
+  // }
+  
+  .mat-paginator-sticky {
+    bottom: 0px;
+    position: sticky;
+    z-index: 10;
+  }
+  
+  mat-footer-row mat-footer-cell{
+      justify-content: center;
+      font-style: italic;
+  }

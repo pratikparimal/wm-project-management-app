@@ -10,6 +10,5 @@ import { OpenRequirementFormModel } from './open-requirements/openRequirementCla
 })
 export class AppComponent {
   titles = 'Cognizant - WM Projects Management';
-
-  // openRequirementModel = new OpenRequirementFormModel();
 }
+

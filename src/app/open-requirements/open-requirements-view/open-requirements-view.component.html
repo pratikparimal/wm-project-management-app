@@ -1,98 +1,137 @@
-<div class="open-requirement-table-view-container mat-elevation-z8 ">
-  <div>
-    <mat-form-field>
-      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
-    </mat-form-field>
+<div class="open-requirement-table-paginator-container">
+  <div class="open-requirement-table-view-container">
+    <mat-card class="open-requirement-table-view">
+      <mat-card-content>
+        <div fxFlex="100%" fxFlexFill>
+          <mat-form-field>
+            <mat-label>Filter : </mat-label>
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter based on below Fields" class="open-req-filter-data">
+          </mat-form-field>
+          <table mat-table #openReqTable [dataSource]="dataSource" class="open-requirement-table mat-elevation-z8"
+            matSort>
+            <!--*ngIf="dataSource.length > 0"-->
+            <ng-container matColumnDef="soLineItemID">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> SO#Line Item Id </th>
+              <td mat-cell *matCellDef="let element"> {{element.soLineItemID}} </td>
+            </ng-container>
+            <ng-container matColumnDef="ownerName">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Owner Name </th>
+              <td mat-cell *matCellDef="let element"> {{element.ownerName}} </td>
+            </ng-container>
+            <ng-container matColumnDef="domainName">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Domain Name </th>
+              <td mat-cell *matCellDef="let element"> {{element.domainName}} </td>
+            </ng-container>
+            <ng-container matColumnDef="groupName">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Group Name </th>
+              <td mat-cell *matCellDef="let element"> {{element.groupName}} </td>
+            </ng-container>
+            <ng-container matColumnDef="projectId">
+              <th mat-header-cell *matHeaderCellDef> Project Id </th>
+              <td mat-cell *matCellDef="let element"> {{element.projectId}} </td>
+            </ng-container>
+            <ng-container matColumnDef="projectName">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Project Name </th>
+              <td mat-cell *matCellDef="let element"> {{element.projectName}} </td>
+            </ng-container>
+            <ng-container matColumnDef="winzoneId">
+              <th mat-header-cell *matHeaderCellDef> Winzone Id </th>
+              <td mat-cell *matCellDef="let element"> {{element.winzoneId}} </td>
+            </ng-container>
+            <ng-container matColumnDef="winzoneOpportunity">
+              <th mat-header-cell *matHeaderCellDef> Winzone Opportunity </th>
+              <td mat-cell *matCellDef="let element"> {{element.winzoneOpportunity}} </td>
+            </ng-container>
+            <ng-container matColumnDef="locationName">
+              <th mat-header-cell *matHeaderCellDef> Location Name </th>
+              <td mat-cell *matCellDef="let element"> {{element.locationName}} </td>
+            </ng-container>
+            <ng-container matColumnDef="skillset">
+              <th mat-header-cell *matHeaderCellDef> Skillset </th>
+              <td mat-cell *matCellDef="let element"> {{element.skillset}} </td>
+            </ng-container>
+            <ng-container matColumnDef="opportunityIdentifiedDate">
+              <th mat-header-cell *matHeaderCellDef> Opportunity Identified Date </th>
+              <td mat-cell *matCellDef="let element"> {{element.opportunityIdentifiedDate}} </td>
+            </ng-container>
+            <ng-container matColumnDef="billStartDate">
+              <th mat-header-cell *matHeaderCellDef> Bill StartDate </th>
+              <td mat-cell *matCellDef="let element"> {{element.billStartDate}} </td>
+            </ng-container>
+            <ng-container matColumnDef="billEndDate">
+              <th mat-header-cell *matHeaderCellDef> Bill EndDate </th>
+              <td mat-cell *matCellDef="let element"> {{element.billEndDate}} </td>
+            </ng-container>
+            <ng-container matColumnDef="rate">
+              <th mat-header-cell *matHeaderCellDef> Rate </th>
+              <td mat-cell *matCellDef="let element"> {{element.rate}} </td>
+            </ng-container>
+            <ng-container matColumnDef="revenue">
+              <th mat-header-cell *matHeaderCellDef> Revenue </th>
+              <td mat-cell *matCellDef="let element"> {{element.revenue}} </td>
+            </ng-container>
+            <ng-container matColumnDef="currStatus">
+              <th mat-header-cell *matHeaderCellDef> Current Status </th>
+              <td mat-cell *matCellDef="let element"> {{element.currStatus}} </td>
+            </ng-container>
+            <ng-container matColumnDef="profilesInEvaluation">
+              <th mat-header-cell *matHeaderCellDef> Profiles In Evaluation </th>
+              <td mat-cell *matCellDef="let element"> {{element.profilesInEvaluation}} </td>
+            </ng-container>
+            <ng-container matColumnDef="soCreatedDate">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> SO Created Date </th>
+              <td mat-cell *matCellDef="let element"> {{element.soCreatedDate}} </td>
+            </ng-container>
+            <ng-container matColumnDef="forecastType">
+              <th mat-header-cell *matHeaderCellDef> Forecast Type </th>
+              <td mat-cell *matCellDef="let element"> {{element.forecastType}} </td>
+            </ng-container>
+            <ng-container matColumnDef="filledInternally">
+              <th mat-header-cell *matHeaderCellDef> Filled Internally </th>
+              <td mat-cell *matCellDef="let element"> {{element.filledInternally}} </td>
+            </ng-container>
+            <ng-container matColumnDef="requirementComment">
+              <th mat-header-cell *matHeaderCellDef> Requirement Comment </th>
+              <td mat-cell *matCellDef="let element"> {{element.requirementComment}} </td>
+            </ng-container>
+            <ng-container matColumnDef="closureComment">
+              <th mat-header-cell *matHeaderCellDef> Closure Comment </th>
+              <td mat-cell *matCellDef="let element"> {{element.closureComment}} </td>
+            </ng-container>
+            <ng-container matColumnDef="actionRow" stickyEnd>
+              <th mat-header-cell *matHeaderCellDef></th>
+              <mat-cell *matCellDef="let element">
+                <button mat-icon-button (click)="editRequirementData(element.soLineItemID)">
+                  <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button color="warn" (click)="deleteRequirementData(element.soLineItemID)">
+                  <mat-icon>delete_outline</mat-icon>
+                </button>
+              </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="loading">
+              <mat-footer-cell *matFooterCellDef colspan="6">
+                Loading data...
+              </mat-footer-cell>
+            </ng-container>
+            <ng-container matColumnDef="noData">
+              <mat-footer-cell *matFooterCellDef colspan="6">
+                No data.
+              </mat-footer-cell>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns;"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            <mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide':dataSource!=null}"></mat-footer-row>
+            <mat-footer-row *matFooterRowDef="['noData']" [ngClass]="{'hide':!(dataSource!=null && dataSource.data.length==0)}"></mat-footer-row>
+          </table>
+          <!-- <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="5" showFirstLastButtons class="mat-paginator-sticky"></mat-paginator> -->
+          <!-- <div *ngIf="dataSource.length === 0">No data currently present..!! Thank U</div> -->
+        </div>
+      </mat-card-content>
+    </mat-card>
   </div>
-  <table mat-table [dataSource]="dataSources" class="open-requirement-table" *ngIf="dataSource.length > 0">
-    <ng-container matColumnDef="soLineItemID">
-      <th mat-header-cell *matHeaderCellDef> SO#Line Item Id </th>
-      <td mat-cell *matCellDef="let element"> {{element.soLineItemID}} </td>
-    </ng-container>
-    <ng-container matColumnDef="ownerName">
-      <th mat-header-cell *matHeaderCellDef> Owner Name </th>
-      <td mat-cell *matCellDef="let element"> {{element.ownerName}} </td>
-    </ng-container>
-    <ng-container matColumnDef="domainName">
-      <th mat-header-cell *matHeaderCellDef> Domain Name </th>
-      <td mat-cell *matCellDef="let element"> {{element.domainName}} </td>
-    </ng-container>
-    <ng-container matColumnDef="groupName">
-      <th mat-header-cell *matHeaderCellDef> Group Name </th>
-      <td mat-cell *matCellDef="let element"> {{element.groupName}} </td>
-    </ng-container>
-    <ng-container matColumnDef="projectId">
-      <th mat-header-cell *matHeaderCellDef> Project Id </th>
-      <td mat-cell *matCellDef="let element"> {{element.projectId}} </td>
-    </ng-container>
-    <ng-container matColumnDef="projectName">
-      <th mat-header-cell *matHeaderCellDef> Project Name </th>
-      <td mat-cell *matCellDef="let element"> {{element.projectName}} </td>
-    </ng-container>
-    <ng-container matColumnDef="winzoneId">
-      <th mat-header-cell *matHeaderCellDef> Winzone Id </th>
-      <td mat-cell *matCellDef="let element"> {{element.winzoneId}} </td>
-    </ng-container>
-    <ng-container matColumnDef="winzoneOpportunity">
-      <th mat-header-cell *matHeaderCellDef> Winzone Opportunity </th>
-      <td mat-cell *matCellDef="let element"> {{element.winzoneOpportunity}} </td>
-    </ng-container>
-    <ng-container matColumnDef="locationName">
-      <th mat-header-cell *matHeaderCellDef> Location Name </th>
-      <td mat-cell *matCellDef="let element"> {{element.locationName}} </td>
-    </ng-container>
-    <ng-container matColumnDef="opportunityIdentifiedDate">
-      <th mat-header-cell *matHeaderCellDef> Opportunity Identified Date </th>
-      <td mat-cell *matCellDef="let element"> {{element.opportunityIdentifiedDate}} </td>
-    </ng-container>
-    <ng-container matColumnDef="billStartDate">
-      <th mat-header-cell *matHeaderCellDef> Bill StartDate </th>
-      <td mat-cell *matCellDef="let element"> {{element.billStartDate}} </td>
-    </ng-container>
-    <ng-container matColumnDef="currStatus">
-      <th mat-header-cell *matHeaderCellDef> Current Status </th>
-      <td mat-cell *matCellDef="let element"> {{element.currStatus}} </td>
-    </ng-container>
-    <ng-container matColumnDef="pipelineCount">
-      <th mat-header-cell *matHeaderCellDef> Pipeline </th>
-      <td mat-cell *matCellDef="let element"> {{element.pipelineCount}} </td>
-    </ng-container>
-    <ng-container matColumnDef="forecastType">
-      <th mat-header-cell *matHeaderCellDef> Forecast Type </th>
-      <td mat-cell *matCellDef="let element"> {{element.forecastType}} </td>
-    </ng-container>
-    <ng-container matColumnDef="filledInternally">
-      <th mat-header-cell *matHeaderCellDef> Filled Internally </th>
-      <td mat-cell *matCellDef="let element"> {{element.filledInternally}} </td>
-    </ng-container>
-    <ng-container matColumnDef="requirementComment">
-      <th mat-header-cell *matHeaderCellDef> Requirement Comment </th>
-      <td mat-cell *matCellDef="let element"> {{element.requirementComment}} </td>
-    </ng-container>
-    <ng-container matColumnDef="closureComment">
-      <th mat-header-cell *matHeaderCellDef> Closure Comment </th>
-      <td mat-cell *matCellDef="let element"> {{element.closureComment}} </td>
-    </ng-container>
-    <ng-container matColumnDef="updateRow" stickyEnd>
-      <th mat-header-cell *matHeaderCellDef> Update </th>
-      <td mat-cell *matCellDef="let element">
-        <button mat-button (click)="editRequirementData(element.soLineItemID)">
-          <mat-icon>edit</mat-icon>
-        </button>
-      </td>
-    </ng-container>
-    <ng-container matColumnDef="deleteRow" stickyEnd>
-      <th mat-header-cell *matHeaderCellDef> Delete </th>
-      <td mat-cell *matCellDef="let element">
-        <button mat-button (click)="deleteRequirementData(element.soLineItemID)">
-          <mat-icon>delete</mat-icon>
-        </button>
-      </td>
-    </ng-container>
-    <tr mat-header-row *matHeaderRowDef="displayedColumns;"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
-  <div *ngIf="dataSource.length === 0">No data currently present..!! Thank U</div>
+  <mat-paginator [pageSizeOptions]="[5, 10, 25]" [pageSize]="5" showFirstLastButtons class="mat-paginator-sticky"></mat-paginator>
 </div>
+
 
 <!--  <div *ngIf="dataSource.length > 0">No data currently present..!! Thank U</div>  -->

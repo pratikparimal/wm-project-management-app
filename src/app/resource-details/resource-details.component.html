@@ -1,134 +1,225 @@
-<div class="resourceDetails">
-  <h1>Resource Details</h1>
-</div>
-<hr>
-<mat-card>
-  <mat-card-content>
+<div class="mat-typography resource-search-form-container">
+  <div class="resourceDetails">
+    Resource Details
+  </div>
+  <hr>
 
-    <div fxFlex="25%">
-      <mat-card class="controles-container">
-        <mat-form-field>
-          <mat-select placeholder="Project Details" id="projectName" required #projectDetails>
-            <mat-option *ngFor="let details of projectdetails" [value]="details.id">
-              {{details.id}} - {{details.name}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-      </mat-card>
-    </div>
-    
-    <div fxLayoutGap="10px"></div>
-
-    <div fxFlex="25%" class="button2">
-      <button mat-flat-button color="primary" class="submit-resource-button" (click)="Search(projectDetails.value)"
-        type="submit">
-        <span><b>Search</b></span>
+  <div class="resource-details-body">
+    <div class="add-requirement-button-container">
+      <button mat-raised-button class="add-requirement-button" color="primary" (click)="addContact()">
+        <mat-icon>add_box</mat-icon>
+        <b>Add New Resource</b>
       </button>
     </div>
+    <mat-tab-group dynamicHeight>
+      <mat-tab label="Project Details">
+        <br>
+        <div class="example-small-box mat-elevation-z4">
+          <div class="form-body">
+            <form [formGroup]="resourceFormSearch" class="resource-search-form-control">
+              <div fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutWrap fxLayoutGap="2%" fxLayoutAlign="space-between center"
+                class="fx-layout-form-control">
 
-    <div fxLayoutGap="10px"></div>
+                <div fxFlex="30%" fxFlexFill>
+                  <div class="controles-container">
+                    <mat-form-field class="form-group" appearance="outline">
+                      <mat-label>Search By ... </mat-label>
+                      <mat-select class="form-control" formControlName="searchBy" placeholder="Domain Name" required #selectedOption>
+                        <mat-option value="Cognizant ID">
+                          Cognizant ID
+                        </mat-option>
+                        <mat-option value="Walmart ID">
+                          Walmart ID
+                        </mat-option>
+                        <mat-option value="Project ID">
+                            Project ID
+                          </mat-option>
+                        <mat-option value="FG Work ID">
+                          FG Work ID
+                        </mat-option>
+                        <mat-option value="FG Contract">
+                          FG Contract
+                        </mat-option>
+                        <mat-option value="Owner Name">
+                          Owner Name
+                        </mat-option>
+                        <mat-option value="Group Name">
+                          Group Name
+                        </mat-option>
+                        <mat-option value="Domain Name">
+                          Domain Name
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                </div>
+               
+                <div fxFlex="30%" fxFlexFill *ngIf="selectedOption.value">
+                  <div class="controles-container">
+                    <mat-form-field class="form-group" appearance="outline">
+                      <mat-label>{{selectedOption.value}}</mat-label>
+                      <input matInput class="form-control" formControlName="inputTextField" type="text"
+                      required />
+                    </mat-form-field>
+                  </div>
+                </div>
 
-    <div fxFlex="25%">
-      <button mat-flat-button color="primary" (click)="addContact()"><b>Add New Resource</b></button>
-    </div>
+                <!-- <div fxFlex="30%" fxFlexFill>
+                  <div class="controles-container">
+                    <mat-form-field class="form-group" appearance="outline">
+                      <mat-label>Project Details</mat-label>
+                      <mat-select class="form-control" formControlName="projectName" placeholder="Project Details"
+                        required>
+                        <mat-option *ngFor="let project of projectdetails" [value]="project.name" (onSelectionChange)="onProjectSelect(project.id)">
+                          {{project.id}} - {{project.name}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                    <input type="hidden" formControlName="projectId" [value]="this.projId" />
+                  </div>
+                </div> -->
 
-    <!-- <mat-form-field>
-        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+                <div fxLayoutGap="10px"></div>
+              </div>
+              <div class="submit-resource-button">
+                <button mat-raised-button color="primary" (click)="Search(resourceFormSearch.value)" type="submit">
+                  <span><b>Search</b></span>
+                </button>
+              </div>
 
-      </mat-form-field> -->
+              <!-- <div fxLayoutGap="10px"></div> -->
+            </form>
 
-  </mat-card-content>
-</mat-card>
 
-<mat-card class="tableDetails" *ngIf="!hideTable">
-  <mat-card-content>
 
-    <div fxFlex="100%" fxFlexFill>
-      <table mat-table [dataSource]="resultantArray" class="mat-elevation-z8">
 
-        <ng-container matColumnDef="cogId">
-          <th mat-header-cell *matHeaderCellDef> Cognizant ID </th>
-          <td mat-cell *matCellDef="let element"> {{element.cogId}} </td>
-        </ng-container>
+            <mat-card class="tableDetails" *ngIf="!hideTable">
+              <mat-card-content>
 
-        <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef> Name </th>
-          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-        </ng-container>
+                <div fxFlex="100%" fxFlexFill>
+                  <table mat-table [dataSource]="dataSources" class="mat-elevation-z8" matSort>
 
-        <ng-container matColumnDef="wmId">
-          <th mat-header-cell *matHeaderCellDef> Walmart ID </th>
-          <td mat-cell *matCellDef="let element"> {{element.wmId}} </td>
-        </ng-container>
+                    <ng-container matColumnDef="groupName">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header> Group Name </th>
+                      <td mat-cell *matCellDef="let element"> {{element.groupName}} </td>
+                    </ng-container>
 
-        <ng-container matColumnDef="fgWorkId">
-          <th mat-header-cell *matHeaderCellDef> FG Work ID </th>
-          <td mat-cell *matCellDef="let element"> {{element.fgWorkId}} </td>
-        </ng-container>
+                    <ng-container matColumnDef="domainName">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header> Domain Name </th>
+                      <td mat-cell *matCellDef="let element"> {{element.domainName}} </td>
+                    </ng-container>
 
-        <ng-container matColumnDef="fgContract">
-          <th mat-header-cell *matHeaderCellDef> FG Contract </th>
-          <td mat-cell *matCellDef="let element"> {{element.fgContract}} </td>
-        </ng-container>
+                    <ng-container matColumnDef="ownerName">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header> Owner Name </th>
+                      <td mat-cell *matCellDef="let element"> {{element.ownerName}} </td>
+                    </ng-container>
 
-        <ng-container matColumnDef="billability">
-          <th mat-header-cell *matHeaderCellDef> Billability </th>
-          <td mat-cell *matCellDef="let element"> {{element.billability}} </td>
-        </ng-container>
 
-        <ng-container matColumnDef="allocation">
-          <th mat-header-cell *matHeaderCellDef> Allocation(in %) </th>
-          <td mat-cell *matCellDef="let element"> {{element.allocation}} </td>
-        </ng-container>
+                    <ng-container matColumnDef="cogId">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header> Cognizant ID </th>
+                      <td mat-cell *matCellDef="let element"> {{element.cogId}} </td>
+                    </ng-container>
 
-        <ng-container matColumnDef="location">
-          <th mat-header-cell *matHeaderCellDef> Location </th>
-          <td mat-cell *matCellDef="let element"> {{element.location}} </td>
-        </ng-container>
+                    <ng-container matColumnDef="name">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+                      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                    </ng-container>
 
-        <ng-container matColumnDef="pickerStart">
-          <th mat-header-cell *matHeaderCellDef> Allocation Start Date </th>
-          <td mat-cell *matCellDef="let element"> {{element.pickerStart}} </td>
-        </ng-container>
+                    <ng-container matColumnDef="wmId">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header> Walmart ID </th>
+                      <td mat-cell *matCellDef="let element"> {{element.wmId}} </td>
+                    </ng-container>
 
-        <ng-container matColumnDef="pickerEnd">
-          <th mat-header-cell *matHeaderCellDef> Allocation End Date </th>
-          <td mat-cell *matCellDef="let element"> {{element.pickerEnd}} </td>
-        </ng-container>
+                    <ng-container matColumnDef="fgWorkId">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header> FG Work ID </th>
+                      <td mat-cell *matCellDef="let element"> {{element.fgWorkId}} </td>
+                    </ng-container>
 
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                    <ng-container matColumnDef="fgContract">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header> FG Contract </th>
+                      <td mat-cell *matCellDef="let element"> {{element.fgContract}} </td>
+                    </ng-container>
 
-        <td>
-          <mat-icon (click)="editContact(Contact.ID)">edit</mat-icon>
-        </td>
-        <td>
-          <mat-icon (click)="deleteContact(Contact.ID)">delete</mat-icon>
-        </td>
+                    <ng-container matColumnDef="billability">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header> Billability </th>
+                      <td mat-cell *matCellDef="let element"> {{element.billability}} </td>
+                    </ng-container>
 
-      </table>
-    </div>
-    <!-- <div class="container">
-      <table class="table">
-        <thead>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Contact Number</th>
-          <th>Email</th>
-        </thead>
-        <tr *ngFor="let Contact of ContactList">
-          <td>{{Contact.FirstName}}</td>
-          <td>{{Contact.LastName}}</td>
-          <td>{{Contact.Contact}}</td>
-          <td>{{Contact.Email}}</td>
-          <td>
-            <mat-icon (click)="editContact(Contact.ID)">edit</mat-icon>
-          </td>
-          <td>
-            <mat-icon (click)="deleteContact(Contact.ID)">delete</mat-icon>
-          </td>
-        </tr>
-      </table>
-    </div> -->
-  </mat-card-content>
-</mat-card>
+                    <ng-container matColumnDef="allocation">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header> Allocation(in %) </th>
+                      <td mat-cell *matCellDef="let element"> {{element.allocation}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="location">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header> Location </th>
+                      <td mat-cell *matCellDef="let element"> {{element.location}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="pickerStart">
+                      <th mat-header-cell *matHeaderCellDef> Allocation Start Date </th>
+                      <td mat-cell *matCellDef="let element"> {{element.pickerStart}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="pickerEnd">
+                      <th mat-header-cell *matHeaderCellDef> Allocation End Date </th>
+                      <td mat-cell *matCellDef="let element"> {{element.pickerEnd}} </td>
+                    </ng-container>
+
+                    <!-- <ng-container matColumnDef="updateRow" stickyEnd>
+                        <th mat-header-cell *matHeaderCellDef> Update </th>
+                        <td mat-cell *matCellDef="let element">
+                          <button mat-button (click)="editResourceData(element.cogId)">
+                            <mat-icon>edit</mat-icon>
+                          </button>
+                        </td>
+                      </ng-container>
+                      <ng-container matColumnDef="deleteRow" stickyEnd>
+                        <th mat-header-cell *matHeaderCellDef> Delete </th>
+                        <td mat-cell *matCellDef="let element">
+                          <button mat-button (click)="deleteResourceData(element.cogId)">
+                            <mat-icon>delete</mat-icon>
+                          </button>
+                        </td>
+                      </ng-container> -->
+
+                    <ng-container matColumnDef="actions">
+                      <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                      <mat-cell *matCellDef="let row">
+                        <button mat-icon-button>
+                          <mat-icon>launch</mat-icon>
+                        </button>
+                        <button mat-icon-button color="warn">
+                          <mat-icon>delete_outline</mat-icon>
+                        </button>
+                      </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="loading">
+                      <mat-footer-cell *matFooterCellDef colspan="6">
+                        Loading data...
+                      </mat-footer-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="noData">
+                      <mat-footer-cell *matFooterCellDef colspan="6">
+                        No data.
+                      </mat-footer-cell>
+                    </ng-container>
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                    <mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide':dataSources!=null}"></mat-footer-row>
+                    <mat-footer-row *matFooterRowDef="['noData']" [ngClass]="{'hide':!(dataSources!=null && dataSources.data.length==0)}"></mat-footer-row>
+
+                  </table>
+                  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="5" showFirstLastButtons></mat-paginator>
+                </div>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </div>
+      </mat-tab>
+      <mat-tab label="Resource Details">
+        <br>
+        <app-resource-details-tab></app-resource-details-tab>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+export class ResourceDetails{
+     public cogId: Number;
+     public name: String;
+     public wmId:String;
+     public projectId:Number;
+     public projectName:String;
+     public fgWorkId:Number;
+     public fgContract:String;
+     public billability:String;
+     public location:String;
+     public pickerStart:Date;
+     public pickerEnd:Date;
+     public allocation:Number;
+     public ownerName:String;
+     public groupName:String;
+     public domainName:String;
+}
+
+

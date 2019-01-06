@@ -24,20 +24,7 @@ export class OpenRequirementsComponent implements OnInit {
     const dialogRef = this.dialog.open(OpenRequirementsFormComponent, {
       data: {}
     });
-
-    // dialogRef.afterClosed().subscribe(result => this.getOpenRequirementAllData());
-    // console.log('After closed');
   }
-
-  /*
-  getOpenRequirementAllData() {
-    this._openRequirementService.getOpenRequirementAllData()
-    .subscribe(data => this.openRequirementData = data);
-
-    console.log('In Parent Component');
-    console.log(this.openRequirementData);
-  }
-  */
 
 
   ngOnInit() {  }

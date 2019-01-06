@@ -1,7 +1,7 @@
 export class SOLineItem {
-    soLineItemID: string;
+    soLineItemID: number;
 
-    constructor(){
-        this.soLineItemID = null;
+    constructor() {
+        this.soLineItemID = 0;
     }
 }
