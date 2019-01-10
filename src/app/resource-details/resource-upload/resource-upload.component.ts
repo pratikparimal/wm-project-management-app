@@ -10,6 +10,7 @@ import { ResourceDetails } from './resourceUploadClasses/ResourceDetails';
 
 import { DomainDetails } from './resourceUploadClasses/DomainDetails';
 import { ResourceDetailsService } from 'src/app/service/resource-details.service';
+import { ProjectRoles } from './resourceUploadClasses/project-roles';
 
 @Component({
   selector: 'app-resource-upload',
@@ -27,6 +28,7 @@ export class ResourceUploadComponent implements OnInit {
 
   projectdetails: ProjectDetails[];
   domaindetails: DomainDetails[];
+  roles : ProjectRoles[];
   resourcedetails: ResourceDetails = new ResourceDetails();
   resourcedetailsArray: any = [];
   finalResourceDetailsArray: any = [];
@@ -48,9 +50,10 @@ export class ResourceUploadComponent implements OnInit {
     pickerStart: [],
     pickerEnd: [],
     allocation: [],
-    ownerName : [],
-    groupName : [],
-    domainName : []
+    skillSet : [],
+    experience : [],
+    role : [],
+    rate: []
   });
 
   ngOnInit() {
@@ -63,6 +66,12 @@ export class ResourceUploadComponent implements OnInit {
     this.domaindetails = [
      {domainName : 'Retail', groupName: 'WM-FIN'},
      {domainName : 'Health Care', groupName: 'WM-GLS'}
+    ]
+
+    this.roles = [
+      {role : 'Analyst', rate : 5},
+      {role : 'Associate', rate : 10},
+      {role : 'Senior Associate', rate : 15}
     ]
   }
 

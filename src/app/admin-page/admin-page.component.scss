@@ -1,0 +1,58 @@
+.admin-page-container{
+    width: 100%;
+    // display: flex;
+    flex-direction: column;
+}
+
+.admin-page-header{
+    padding-top: 30px;
+    text-align: center;
+    flex-direction: column;
+    flex: 1;
+}
+
+.admin-page-headerline{
+    font-size: 35px;
+    font-style: bold;
+}
+
+.admin-page-body{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-page-bulk-upload-container{
+    display: flex;
+    // flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.single-upload-container{
+    flex: 1;
+    // width: 75%;
+}
+
+.select-page-list-control{
+    padding: 10px;
+    margin: 2px;
+}
+
+.controles-container{
+    padding-left: 10px;
+}
+
+.select-file-upload-control{
+    border: 2px;
+    border-color: black;
+}
+
+.fill-gap{
+    flex: auto;
+}
+
+.span{
+    padding-left: 5px;
+    padding-right: 5px;
+}

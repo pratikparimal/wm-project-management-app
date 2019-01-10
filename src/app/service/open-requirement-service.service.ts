@@ -48,6 +48,16 @@ export class OpenRequirementService {
     );
   }
 
+  // updateOpenRequirementData(requirement: OpenRequirementFormModel): Observable<OpenRequirementFormModel> {
+  //   console.log('in put func ' + requirement);
+  //   const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+  //   return this.http.put(this.dataUrl, requirement, { headers: headers }).pipe();
+  // }
+
+  updateOpenRequirementData(requirement: OpenRequirementFormModel): void {
+    console.log('in put func ' + requirement);
+  }
+
   private handleError(err: HttpErrorResponse) {
     let errorMessage = '';
     if (err.error instanceof ErrorEvent) {
@@ -78,7 +88,7 @@ export class OpenRequirementService {
       rate: 0,
       revenue: null,
       soCreatedDate: null,
-      profilesInEvaluation: '0',
+      profilesInEvaluation: null,
       forecastType: null,
       filledInternally: null,
       requirementComment: null,

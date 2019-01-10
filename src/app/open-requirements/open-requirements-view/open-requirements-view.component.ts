@@ -62,10 +62,10 @@ export class OpenRequirementsViewComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  editRequirementData(soLineItemID: number) {
-    console.log('Update Function for : ' + soLineItemID);
+  editRequirementData(updateData: any) {
+    console.log('Update Function for : ' + updateData.soLineItemID);
     const dialogRef = this.dialog.open(OpenRequirementsEditComponent, {
-      data: {}
+      data: {updateData}
     });
   }
 
@@ -74,3 +74,5 @@ export class OpenRequirementsViewComponent implements OnInit {
     alert('Do you want to delete record for ' + soLineItemID);
   }
 }
+
+

@@ -18,6 +18,7 @@ export class DashboardComponent implements OnInit {
     return this.toggleSidenav.emit(true);
   }
 
+
   constructor(zone: NgZone) {
     this.mediaMatcher.addListener(mql =>
       zone.run(() => this.mediaMatcher = mql));
@@ -29,5 +30,4 @@ export class DashboardComponent implements OnInit {
   isScreenSmall(): boolean {
     return this.mediaMatcher.matches;
   }
-
 }

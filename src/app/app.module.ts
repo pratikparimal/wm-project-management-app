@@ -18,15 +18,13 @@ import { MatDatepickerModule } from '@angular/material';
 import { FlexLayoutModule, FlexModule } from '@angular/flex-layout';
 import { OpenRequirementsViewComponent } from './open-requirements/open-requirements-view/open-requirements-view.component';
 import { OpenRequirementsFormComponent } from './open-requirements/open-requirements-form/open-requirements-form.component';
-import { OpenRequirementService } from './service/open-requirement-service.service';
 import { ResourceDetailsComponent } from './resource-details/resource-details.component';
-import { OpenRequirementData } from './open-requirements/open-requirement-api-data/openRequirementData';
 import { ResourceDetailsTabComponent } from './resource-details/resource-details-tab/resource-details-tab.component';
-import { ResourceDetailsData } from './resource-details/resource-details-api-data/resourceDetailsData';
 
 import { AllDataAPI } from './shared/data-api/AllDataAPI';
 import { ResourceUploadComponent } from './resource-details/resource-upload/resource-upload.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
+import { EditResourceComponent } from './resource-details/resource-details-tab/edit-resource/edit-resource.component';
 import { OpenRequirementsSearchComponent } from './open-requirements/open-requirements-search/open-requirements-search.component';
 import { OpenRequirementsEditComponent } from './open-requirements/open-requirements-edit/open-requirements-edit.component';
 
@@ -42,6 +40,7 @@ import { OpenRequirementsEditComponent } from './open-requirements/open-requirem
     OpenRequirementsFormComponent,
     ResourceDetailsTabComponent,
     AdminPageComponent,
+    EditResourceComponent,
     OpenRequirementsSearchComponent,
     OpenRequirementsEditComponent
   ],
@@ -60,9 +59,11 @@ import { OpenRequirementsEditComponent } from './open-requirements/open-requirem
   entryComponents: [
     OpenRequirementsFormComponent,
     ResourceUploadComponent,
+    EditResourceComponent,
     OpenRequirementsEditComponent
   ],
   providers: [MatDatepickerModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+

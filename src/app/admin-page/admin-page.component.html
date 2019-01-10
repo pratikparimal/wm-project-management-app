@@ -1,3 +1,63 @@
-<input type="file" style="display:none" (change)="selectFile($event)" #fileInput>
-<button type="button" (click)="fileInput.click()">Select File</button>
-<button type="button" (click)="uploadFile()">Upload File</button>
+<div class="admin-page-container mat-typography">
+    <div class="admin-page-header">
+        <h2 class="admin-page-headerline mat-typography">Admin Screen</h2>
+    </div>
+    <div class="admin-page-body mat-typography">
+        <div class="admin-page-bulk-upload-container">
+            <mat-card class="single-upload-container">
+                <mat-card-header>
+                    <mat-card-title>Bulk Upload</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <div class="select-page-list-control">
+                        <label>Select Document Type :</label>
+                        <mat-form-field appearance="outline" class="controles-container">
+                            <mat-label>Upload for...</mat-label>
+                            <mat-select placeholder="Select Page ..." class="select-page-list" [formControl]="selectPageForm" #selectPage required>
+                                <mat-option *ngFor="let page of pages" [value]="page">
+                                    {{page}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="select-file-upload-control">
+                        <mat-card>
+                            <mat-grid-list cols="3" rowHeight="100px" style="display: flex;">
+                                <mat-grid-tile colspan="1" rowspan="1">
+                                    <label class="mat-typography" style="padding-right: 10px;">Select {{selectPage.value}} Sheet : </label>
+                                    <input type="file" style="display:none" (change)="selectFile($event)" #fileInput>
+                                    <button mat-flat-button type="button" (click)="fileInput.click()" style="background-color: rgb(3, 109, 3); color: white">
+                                        <mat-icon>check_circle</mat-icon>
+                                        Select File
+                                    </button>
+                                </mat-grid-tile>
+                                <mat-grid-tile colspan="2" rowspan="1">
+                                    <mat-form-field *ngIf="fileSelected">
+                                        <input matInput readonly type="text" [value]="fileInput.value" class="mat-typography"/>
+                                    </mat-form-field>
+                                    <div>
+                                        <span style="padding-left: 10px;" >
+                                            <button mat-flat-button type="button" (click)="uploadFile()" color="primary">
+                                                <mat-icon>cloud_upload</mat-icon>
+                                                Upload
+                                            </button>
+                                        </span>
+                                        <span style="padding-left: 10px;" >
+                                            <button mat-flat-button type="button" (click)="cancelUpload()" color="warn">
+                                                    <mat-icon>cancel</mat-icon>
+                                                Cancel
+                                            </button>
+                                        </span>
+                                    </div>
+                                </mat-grid-tile>
+                            </mat-grid-list>
+                        </mat-card>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+
+    <!-- <input type="file" style="display:none" (change)="selectFile($event)" #fileInput>
+    <button type="button" (click)="fileInput.click()">Select File</button>
+    <button type="button" (click)="uploadFile()">Upload File</button> -->

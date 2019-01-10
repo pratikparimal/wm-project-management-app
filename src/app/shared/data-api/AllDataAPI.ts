@@ -23,9 +23,10 @@ export class AllDataAPI implements InMemoryDbService {
                 pickerStart : null,
                 pickerEnd: null,
                 allocation : 39,
-                ownerName: "Rich",
-                groupName : "WM-FIN",
-                domainName: "Retail"
+                skillSet: "Java",
+                experience : 2,
+                role: "Analyst",
+                rate: 5
       },
             {
                 cogId: 7,
@@ -40,9 +41,10 @@ export class AllDataAPI implements InMemoryDbService {
                 pickerStart : null,
                 pickerEnd: null,
                 allocation : 66,
-                ownerName: "Rich",
-                groupName : "WM-GLS",
-                domainName: "Health Care"
+                skillSet: "Angular",
+                experience : 3,
+                role:"Associate",
+                rate:10
             },
             {
                 cogId: 8,
@@ -57,9 +59,10 @@ export class AllDataAPI implements InMemoryDbService {
                 pickerStart : null,
                 pickerEnd: null,
                 allocation : 39,
-                ownerName: "harry",
-                groupName : "WM-FIN",
-                domainName: "Retail"
+                skillSet: "Full-Stack",
+                experience : 7,
+                role:"Senior Associate",
+                rate:10
             }
         ];
 

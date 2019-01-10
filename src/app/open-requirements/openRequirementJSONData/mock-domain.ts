@@ -6,5 +6,5 @@ export const DOMAINS: Domain[] = [
     {'domainName': 'Finance'},
     {'domainName': 'Real Estate'},
     {'domainName': 'Store'},
-    {'domainName': 'AVM'}
+    {'domainName': 'BFS'}
 ];

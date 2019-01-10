@@ -8,7 +8,8 @@
             </button>
         </span>
     </div>
-    <form (ngSubmit)="onOpenRequirementFormSubmit(openRequirementForm.value)" [formGroup]="openRequirementForm" class="open-requirement-form" mat-dialog-content>
+    <form (ngSubmit)="onOpenRequirementFormSubmit(openRequirementForm.value)" [formGroup]="openRequirementForm" class="open-requirement-form"
+        mat-dialog-content>
         <div class="mat-typography parent-flex-container">
             <div fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutWrap fxLayoutGap="1%" fxLayoutAlign="space-between center"
                 class="child-flex-container">
@@ -30,13 +31,14 @@
                         <mat-form-field class="form-group" appearance="outline">
                             <mat-label>Project Details</mat-label>
                             <mat-select class="form-control" formControlName="projectName" placeholder="Project Details"
-                                required >
-                                <mat-option *ngFor="let project of projects" [value]="project.projectName" (onSelectionChange)="onProjectSelect(project.projectId)">
+                                required>
+                                <mat-option *ngFor="let project of projects" [value]="project.projectName"
+                                    (onSelectionChange)="onProjectSelect(project.projectId)">
                                     {{project.projectId}} - {{project.projectName}}
                                 </mat-option>
                             </mat-select>
                         </mat-form-field>
-                        <input type="hidden" formControlName="projectId" [value]="this.projId"/>
+                        <input type="hidden" formControlName="projectId" [value]="this.projId" />
                     </div>
                 </div>
                 <div fxFlex="24%" fxFlexFill>
@@ -109,8 +111,8 @@
                     <div class="controles-container">
                         <mat-form-field class="form-group" appearance="outline">
                             <mat-label>Skillset</mat-label>
-                            <input matInput class="form-control" formControlName="skillset" placeholder="Skillset"
-                                type="text" />
+                            <input matInput class="form-control" formControlName="skillset" placeholder="Skillset" type="text"
+                                required />
                         </mat-form-field>
                     </div>
                 </div>
@@ -131,7 +133,7 @@
                         <mat-form-field class="form-group" appearance="outline">
                             <mat-label>Billing Start Date</mat-label>
                             <input class="form-control" matInput [matDatepicker]="picker" placeholder="Billing Start Date"
-                                formControlName="billStartDate" />
+                                formControlName="billStartDate" required (dateInput)="onBillingStartDateInput($event)" />
                             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                             <mat-datepicker #picker></mat-datepicker>
                         </mat-form-field>
@@ -142,7 +144,7 @@
                         <mat-form-field class="form-group" appearance="outline">
                             <mat-label>Billing End Date</mat-label>
                             <input class="form-control" matInput [matDatepicker]="pickerBillEndDate" placeholder="Billing End Date"
-                                formControlName="billEndDate" />
+                                formControlName="billEndDate" required (dateInput)="onBillingEndDateInput($event)"/>
                             <mat-datepicker-toggle matSuffix [for]="pickerBillEndDate"></mat-datepicker-toggle>
                             <mat-datepicker #pickerBillEndDate></mat-datepicker>
                         </mat-form-field>
@@ -154,18 +156,18 @@
                 <div fxFlex="24%" fxFlexFill>
                     <div class="controles-container">
                         <mat-form-field class="form-group" appearance="outline">
-                            <mat-label>Rate</mat-label>
-                            <input matInput class="form-control" formControlName="rate" placeholder="Rate"
-                                type="number" />
+                            <mat-label>Rate($/hour)</mat-label>
+                            <input matInput class="form-control" formControlName="rate" placeholder="Rate" type="number"
+                                required (keyup)="onRateInput($event)" />
                         </mat-form-field>
                     </div>
                 </div>
                 <div fxFlex="24%" fxFlexFill>
                     <div class="controles-container">
                         <mat-form-field class="form-group" appearance="outline">
-                            <mat-label>Revenue</mat-label>
-                            <input matInput class="form-control" formControlName="revenue" placeholder="Revenue"
-                                type="text" />
+                            <mat-label>Revenue(in $)</mat-label>
+                            <input matInput class="form-control" formControlName="revenue" placeholder="Revenue(in $)" type="text"
+                                readonly [value]="totalRevenue"/>
                         </mat-form-field>
                     </div>
                 </div>
@@ -238,15 +240,6 @@
                         </mat-form-field>
                     </div>
                 </div>
-                <!-- <div fxFlex="24%" fxFlexFill>
-                    <div class="controles-container">
-                        <mat-form-field class="form-group text-area-control" appearance="outline">
-                            <mat-label>Closure Comments</mat-label>
-                            <textarea matInput class="form-control" formControlName="closureComment" placeholder="Closure Comments/Details"
-                                type="text"></textarea>
-                        </mat-form-field>
-                    </div>
-                </div> -->
             </div>
             <div fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutWrap fxLayoutGap="1%" fxLayoutAlign="space-between center"
                 class="child-flex-container">

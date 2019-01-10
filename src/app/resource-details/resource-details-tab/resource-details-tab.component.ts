@@ -1,8 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatSort,MatPaginator } from '@angular/material';
+import { MatDialog } from '@angular/material';
 
 import { ResourceDetailsService } from '../../service/resource-details.service';
 import { ResourceDetails } from '../resource-upload/resourceUploadClasses/ResourceDetails';
+import { EditResourceComponent } from './edit-resource/edit-resource.component';
 
 @Component({
   selector: 'app-resource-details-tab',
@@ -13,29 +15,31 @@ import { ResourceDetails } from '../resource-upload/resourceUploadClasses/Resour
 export class ResourceDetailsTabComponent implements OnInit {
   dataSources : MatTableDataSource<any>;
   errorMessage: string;
-  constructor(private _resourceService: ResourceDetailsService) { }
+  constructor(private _resourceService: ResourceDetailsService, private dialog?: MatDialog) { }
 
-  
+  isPopupOpened = true;
   dataSource : ResourceDetails[] = [];
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   displayedColumns: string[] = [
-    'groupName',
-    'domainName',
-    'ownerName',
-    'cogId', 
-    'name', 
-    'wmId', 
-    'fgWorkId', 
-    'fgContract', 
-    'billability', 
-    'allocation', 
-    'location', 
-    'pickerStart', 
+    'skillSet',
+    'experience',
+    'role',
+    'rate',
+    'cogId',
+    'name',
+    'wmId',
+    'fgWorkId',
+    'fgContract',
+    'billability',
+    'allocation',
+    'location',
+    'pickerStart',
     'pickerEnd',
-    'actions'];
+    'updateRow',
+    'deleteRow'];
 
   ngOnInit() {
     this._resourceService.getAllResourceData().subscribe(
@@ -59,7 +63,20 @@ export class ResourceDetailsTabComponent implements OnInit {
     this.dataSources.filter = filterValue.trim().toLowerCase();
   }
   
+  editResourceData(data:any){
+    this.isPopupOpened = true;
+    const dialogRef = this.dialog.open(EditResourceComponent, {
+      data : {data}
+    });
 
+    dialogRef.afterClosed().subscribe(result => {
+      this.isPopupOpened = false;
+    });
+  }
+
+  deleteResourceData(data:any){
+    alert("You are about to delete the data !!!");
+  }
  
 }
 

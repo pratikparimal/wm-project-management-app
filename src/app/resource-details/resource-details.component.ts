@@ -10,6 +10,7 @@ import { ResourceDetails } from './resource-upload/resourceUploadClasses/Resourc
 import { ProjectDetails } from './resource-upload/resourceUploadClasses/Project_ID_Name';
 import { ResourceUploadComponent } from './resource-upload/resource-upload.component';
 import { SearchBy } from './resource-upload/resourceUploadClasses/searchBy';
+import { EditResourceComponent } from './resource-details-tab/edit-resource/edit-resource.component';
 
 @Component({
   selector: 'app-resource-details',
@@ -43,9 +44,10 @@ export class ResourceDetailsComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   displayedColumns: string[] = [
-    'groupName',
-    'domainName',
-    'ownerName',
+    'skillSet',
+    'experience',
+    'role',
+    'rate',
     'cogId',
     'name',
     'wmId',
@@ -56,7 +58,8 @@ export class ResourceDetailsComponent implements OnInit {
     'location',
     'pickerStart',
     'pickerEnd',
-    'actions'];
+    'updateRow',
+    'deleteRow'];
 
   ngOnInit() {
     this.projectdetails = [
@@ -100,6 +103,21 @@ export class ResourceDetailsComponent implements OnInit {
     });
   }
 
+  editResourceData(data:any){
+    this.isPopupOpened = true;
+    const dialogRef = this.dialog.open(EditResourceComponent, {
+      data : {data}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.isPopupOpened = false;
+    });
+  }
+
+  deleteResourceData(data:any){
+    alert("You are about to delete the data !!!");
+  }
+
   Search(formData: any) {
     this.hideTable = false;
     this.resultantArray = [];
@@ -133,18 +151,8 @@ export class ResourceDetailsComponent implements OnInit {
               this.resultantArray.push(index);
             }
           }
-          else if (formData.searchBy == "Owner Name") {
-            if (index.ownerName === formData.inputTextField) {
-              this.resultantArray.push(index);
-            }
-          }
-          else if (formData.searchBy == "Group Name") {
-            if (index.groupName === formData.inputTextField) {
-              this.resultantArray.push(index);
-            }
-          }
-          else if (formData.searchBy == "Domain Name") {
-            if (index.domainName === formData.inputTextField) {
+          else if (formData.searchBy == "Role") {
+            if (index.role === formData.inputTextField) {
               this.resultantArray.push(index);
             }
           }
@@ -158,4 +166,3 @@ export class ResourceDetailsComponent implements OnInit {
     );
   }
 }
-

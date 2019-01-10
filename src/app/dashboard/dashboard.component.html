@@ -1,6 +1,6 @@
 <div class="mat-typography app-dashboard-container">
   <div class="app-main-body">
-    <div class="app-main-header">
+    <div class="app-main-">
       <mat-toolbar class="app-header-toolbar" fxLayout="row" fxLayout.xs="column" fxLayoutWrap>
         <div class="header-toolbar-span-1">
           <button mat-button class="sidenav-toggle" (click)="sidenav.toggle()">
@@ -18,29 +18,46 @@
         </div>
       </mat-toolbar>
     </div>
-    <div class="app-main-content">
-      <mat-sidenav-container class="app-sidenav-container">
-        <mat-sidenav #sidenav [mode]="isScreenSmall() ? 'over' : 'side'" [opened]="!isScreenSmall()" class="navlink-sidebar mat-elevation-z10">
-          <!-- <div class="sidenav-wm-logo">
+    <mat-sidenav-container class="app-sidenav-container">
+      <mat-sidenav #sidenav [mode]="isScreenSmall() ? 'over' : 'side'" [opened]="!isScreenSmall()" class="navlink-sidebar mat-elevation-z10">
+        <!-- <div class="sidenav-wm-logo">
           <img class="walmart-logo" alt="Walmart" src="http://boostafosterfamily.org/wp-content/uploads/2017/05/walmart.jpg" title="Walmart">
         </div> -->
-          <mat-nav-list>
-            <a mat-list-item class="nav-link" color="primary" routerLink="/requirements">Open Requirements</a>
-            <hr>
-          </mat-nav-list>
-          <mat-nav-list>
-            <a mat-list-item class="nav-link" color="primary" routerLink="/resourcedetails">Resource Details</a>
-            <hr>
-          </mat-nav-list>
-          <mat-nav-list>
-            <a mat-list-item class="nav-link" color="primary" routerLink="/admin">Admin</a>
-            <hr>
-          </mat-nav-list>
-        </mat-sidenav>
-        <mat-sidenav-content class="app-sidenav-content">
-          <router-outlet></router-outlet>
-        </mat-sidenav-content>
-      </mat-sidenav-container>
-    </div>
+        <mat-nav-list>
+          <a mat-list-item class="nav-link" color="primary" routerLink="/requirements">Open Requirements</a>
+          <hr>
+        </mat-nav-list>
+        <mat-nav-list>
+          <a mat-list-item class="nav-link" color="primary" routerLink="/resourcedetails">Resource Details</a>
+          <hr>
+        </mat-nav-list>
+        <mat-nav-list>
+          <a mat-list-item class="nav-link" color="primary" routerLink="/admin">Admin</a>
+          <hr>
+        </mat-nav-list>
+      </mat-sidenav>
+      <mat-sidenav-content class="app-sidenav-content">
+        <!-- <div class="app-main-header">
+          <mat-toolbar class="app-header-toolbar" fxLayout="row" fxLayout.xs="column" fxLayoutWrap>
+            <div class="header-toolbar-span-1" >
+              <button mat-button class="sidenav-toggle" (click)="sidenav.toggle()">
+                <mat-icon>menu</mat-icon>
+              </button>
+            </div>
+            <div class="header-toolbar-span-2" >
+              <a routerLink="/requirements">
+                <img class="cts-logo" alt="Cognizant" src="https://www.cognizant.com/content/dam/cognizant_foundation/Dotcomimage/COG-Logo-White.svg"
+                  title="Cognizant">
+              </a>
+            </div>
+            <div class="header-toolbar-span-3" >
+              {{title}}
+            </div>
+          </mat-toolbar>
+        </div> -->
+
+        <router-outlet></router-outlet>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
   </div>
 </div>

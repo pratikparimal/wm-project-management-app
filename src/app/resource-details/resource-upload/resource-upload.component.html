@@ -18,41 +18,52 @@
         <div fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutWrap fxLayoutGap="2%" fxLayoutAlign="space-between center"
         class="fx-layout-form-control">
 
-        <div fxFlex="30%" fxFlexFill>
-          <div class="controles-container">
-            <mat-form-field class="form-group" appearance="outline">
-              <mat-label>Domain Name</mat-label>
-              <mat-select class="form-control" formControlName="domainName" placeholder="Domain Name" required>
-                <mat-option *ngFor="let domain of domaindetails" [value]="domain.domainName">
-                  {{domain.domainName}}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
+        <div fxFlex="20%" fxFlexFill>
+            <div class="controles-container">
+              <mat-form-field class="form-group" appearance="outline">
+                <mat-label>Skill Set</mat-label>
+                <input matInput class="form-control" formControlName="skillSet" placeholder="Skill Set" type="text"
+                  required />
+              </mat-form-field>
+            </div>
           </div>
-        </div>
 
-        <div fxFlex="30%" fxFlexFill>
-          <div class="controles-container">
-            <mat-form-field class="form-group" appearance="outline">
-              <mat-label>Group Name</mat-label>
-              <mat-select class="form-control" formControlName="groupName" placeholder="Group Name" required>
-                <mat-option *ngFor="let group of domaindetails" [value]="group.groupName">
-                  {{group.groupName}}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
+        <div fxFlex="20%" fxFlexFill>
+            <div class="controles-container">
+              <mat-form-field class="form-group" appearance="outline">
+                <mat-label>Experience</mat-label>
+                <input matInput class="form-control" formControlName="experience" placeholder="Experience" type="text"
+                  required />
+              </mat-form-field>
+            </div>
           </div>
-        </div>
+  
+          <div fxFlex="20%" fxFlexFill>
+              <div class="controles-container">
+                <mat-form-field class="form-group" appearance="outline">
+                  <mat-label>Project Role</mat-label>
+                  <mat-select class="form-control" formControlName="role" placeholder="Project Role" required>
+                    <mat-option *ngFor="let role of roles" [value]="role.role">
+                      {{role.role}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
 
-        <div fxFlex="30%" fxFlexFill>
-          <div class="controles-container">
-            <mat-form-field class="form-group" appearance="outline">
-              <mat-label>Owner Name</mat-label>
-              <input matInput class="form-control" formControlName="ownerName" placeholder="Owner Name" type="text"
-                required />
-            </mat-form-field>
-          </div>
-        </div>
+            <div fxFlex="20%" fxFlexFill>
+                <div class="controles-container">
+                  <mat-form-field class="form-group" appearance="outline">
+                    <mat-label>Rate</mat-label>
+                    <mat-select class="form-control" formControlName="rate" placeholder="Rate" required>
+                      <mat-option *ngFor="let rate of roles" [value]="rate.rate">
+                        {{rate.rate}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+
       </div>
 
       <div fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutWrap fxLayoutGap="2%" fxLayoutAlign="space-between center"
@@ -145,8 +156,8 @@
         <div fxFlex="30%" fxFlexFill>
           <div class="controles-container">
             <mat-form-field class="form-group" appearance="outline">
-              <mat-label>Project Role : </mat-label>
-              <mat-select class="form-control" formControlName="billability" placeholder="Project Role" required>
+              <mat-label>Billability : </mat-label>
+              <mat-select class="form-control" formControlName="billability" placeholder="Billability" required>
                 <mat-option value="Billable">Billable</mat-option>
                 <mat-option value="Non-Billable">Non-Billable</mat-option>
               </mat-select>

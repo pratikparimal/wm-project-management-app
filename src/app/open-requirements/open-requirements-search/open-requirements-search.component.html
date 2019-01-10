@@ -1,26 +1,108 @@
 <div class="open-requirement-search-container">
   <div class="open-requirement-search-form-container">
     <form [formGroup]="openRequirementSearch" class="open-requirement-search-form" (ngSubmit)="onSearchFormSubmit(openRequirementSearch.value)">
-      <div fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutWrap fxLayoutGap="2.5%" fxLayoutAlign="space-between center" class="child-flex-container mat-typography">
+      <div fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutWrap fxLayoutGap="2.5%" fxLayoutAlign="space-between center"
+        class="child-flex-container mat-typography">
         <div fxFlex="35%" fxFlexFill>
           <div class="controles-container">
             <mat-form-field class="form-group" appearance="outline">
               <mat-label>Search By</mat-label>
-              <mat-select class="form-control" formControlName="searchBy" placeholder="Search By..."
-                  required #selectedSearch >
-                  <mat-option *ngFor="let searchBy of searchByCategory" [value]="searchBy" >
-                      {{searchBy}}
-                  </mat-option>
+              <mat-select class="form-control" formControlName="searchBy" placeholder="Search By..." required
+                #selectedSearch>
+                <mat-option *ngFor="let searchBy of searchByCategory" [value]="searchBy">
+                  {{searchBy}}
+                </mat-option>
               </mat-select>
-          </mat-form-field>
+            </mat-form-field>
           </div>
         </div>
-        <div fxFlex="35%" fxFlexFill *ngIf="selectedSearch.value">
+        <div fxFlex="35%" fxFlexFill *ngIf="selectedSearch.value === 'SO LineItem ID' || selectedSearch.value === 'Owner Name' || selectedSearch.value === 'Skillset'">
           <div class="controles-container">
             <mat-form-field class="form-group" appearance="outline">
               <mat-label>{{selectedSearch.value}}</mat-label>
-              <input matInput class="form-control" formControlName="searchValue" type="text"
-              required />
+              <input matInput class="form-control" formControlName="searchValue" type="text" required />
+            </mat-form-field>
+          </div>
+        </div>
+        <div fxFlex="35%" fxFlexFill *ngIf="selectedSearch.value === 'Domain Name'">
+          <div class="controles-container">
+            <mat-form-field class="form-group" appearance="outline">
+              <mat-label>{{selectedSearch.value}}</mat-label>
+              <mat-select class="form-control" formControlName="searchValue" placeholder="Domain Name" required>
+                <mat-option *ngFor="let domain of domains" [value]="domain.domainName">
+                  {{domain.domainName}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+        <div fxFlex="35%" fxFlexFill *ngIf="selectedSearch.value === 'Project Details'">
+          <div class="controles-container">
+            <mat-form-field class="form-group" appearance="outline">
+              <mat-label>{{selectedSearch.value}}</mat-label>
+              <mat-select class="form-control" formControlName="searchValue" placeholder="Project Details" required>
+                <mat-option *ngFor="let project of projects" [value]="project.projectId">
+                  {{project.projectId}} - {{project.projectName}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+        <div fxFlex="35%" fxFlexFill *ngIf="selectedSearch.value === 'Group Name'">
+          <div class="controles-container">
+            <mat-form-field class="form-group" appearance="outline">
+              <mat-label>{{selectedSearch.value}}</mat-label>
+              <mat-select class="form-control" formControlName="searchValue" placeholder="Group Name" required>
+                <mat-option *ngFor="let group of groups" [value]="group.groupName">
+                  {{group.groupName}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+        <div fxFlex="35%" fxFlexFill *ngIf="selectedSearch.value === 'Location Name'">
+          <div class="controles-container">
+            <mat-form-field class="form-group" appearance="outline">
+              <mat-label>{{selectedSearch.value}}</mat-label>
+              <mat-select class="form-control" formControlName="searchValue" placeholder="Location Name" required>
+                <mat-option value="Onsite">Onsite</mat-option>
+                <mat-option value="Offshore">Offshore</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+        <div fxFlex="35%" fxFlexFill *ngIf="selectedSearch.value === 'Current Status'">
+          <div class="controles-container">
+            <mat-form-field class="form-group" appearance="outline">
+              <mat-label>{{selectedSearch.value}}</mat-label>
+              <mat-select class="form-control" formControlName="searchValue" placeholder="Current Status" required>
+                <mat-option value="Open">Open</mat-option>
+                <mat-option value="Closed">Closed</mat-option>
+                <mat-option value="Cancelled">Cancelled</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+        <div fxFlex="35%" fxFlexFill *ngIf="selectedSearch.value === 'Forecast Type'">
+          <div class="controles-container">
+            <mat-form-field class="form-group" appearance="outline">
+              <mat-label>{{selectedSearch.value}}</mat-label>
+              <mat-select class="form-control" formControlName="searchValue" placeholder="Forecast Type" required>
+                <mat-option *ngFor="let forecast of forecasts" [value]="forecast.forecastType">
+                  {{forecast.forecastType}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+        <div fxFlex="35%" fxFlexFill *ngIf="selectedSearch.value === 'Filled Internally'">
+          <div class="controles-container">
+            <mat-form-field class="form-group" appearance="outline">
+              <mat-label>{{selectedSearch.value}}</mat-label>
+              <mat-select class="form-control" formControlName="searchValue" placeholder="Filled Internally" required>
+                <mat-option value="Yes">Yes</mat-option>
+                <mat-option value="No">No</mat-option>
+              </mat-select>
             </mat-form-field>
           </div>
         </div>
@@ -40,7 +122,6 @@
             <div fxFlex="100%" fxFlexFill>
               <table mat-table #openReqTable [dataSource]="dataSource" class="open-requirement-table mat-elevation-z8"
                 matSort>
-                <!--*ngIf="dataSource.length > 0"-->
                 <ng-container matColumnDef="soLineItemID">
                   <th mat-header-cell *matHeaderCellDef mat-sort-header> SO#Line Item Id </th>
                   <td mat-cell *matCellDef="let element"> {{element.soLineItemID}} </td>

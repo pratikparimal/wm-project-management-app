@@ -28,6 +28,11 @@ export class OpenRequirementsFormComponent implements OnInit {
   openRequirementData: OpenRequirementFormModel;
   errorMessage: string;
   projId: any;
+  billingStartDate: Date;
+  billingEndDate: Date;
+  totalRevenue: number;
+  rateOfBilling: number;
+
 
   constructor(private fb: FormBuilder,
     public dialogRef: MatDialogRef<OpenRequirementsFormComponent>,
@@ -60,6 +65,8 @@ export class OpenRequirementsFormComponent implements OnInit {
       revenue: [''],
       soCreatedDate: [''],
     });
+
+    this.totalRevenue = 0;
 
   }
 
@@ -118,6 +125,27 @@ export class OpenRequirementsFormComponent implements OnInit {
 
   formCloseButton() {
     this.dialogRef.close();
+  }
+
+  onBillingStartDateInput(event: any) {
+    this.billingStartDate = event.target.value;
+  }
+
+  onBillingEndDateInput(event) {
+    this.billingEndDate = event.target.value;
+  }
+
+  onRateInput(event) {
+    console.log('rate  :  ', event.target.value);
+    this.rateOfBilling = event.target.value;
+    this.calculateRevenue(+this.rateOfBilling);
+  }
+
+  calculateRevenue(rate: number) {
+    let timeDiff = Math.abs(this.billingEndDate.getTime() - this.billingStartDate.getTime());
+    this.totalRevenue = 8 * rate * Math.ceil(timeDiff / (1000 * 3600 * 24));
+    console.log('total revenue : ', this.totalRevenue);
+    timeDiff = 0;
   }
 
 }

@@ -5,6 +5,11 @@ import { MatTableDataSource, MatSort, MatPaginator, MatDialog } from '@angular/m
 import { OpenRequirementsEditComponent } from '../open-requirements-edit/open-requirements-edit.component';
 import { OpenRequirementFormModel } from '../openRequirementClasses/openRequirementFormModel';
 
+import { DOMAINS } from '../openRequirementJSONData/mock-domain';
+import { PROJECTS } from '../openRequirementJSONData/mock-project';
+import { GROUPS } from '../openRequirementJSONData/mock-group';
+import { FORECASTS } from '../openRequirementJSONData/mock-forecast';
+
 @Component({
   selector: 'app-open-requirements-search',
   templateUrl: './open-requirements-search.component.html',
@@ -29,6 +34,11 @@ export class OpenRequirementsSearchComponent implements OnInit {
     'Forecast Type',
     'Filled Internally'
   ];
+
+  domains = DOMAINS;
+  forecasts = FORECASTS;
+  projects = PROJECTS;
+  groups = GROUPS;
 
   errorMessage: string;
   dataSource: MatTableDataSource<any>;
@@ -113,7 +123,7 @@ export class OpenRequirementsSearchComponent implements OnInit {
             }
           } else
           if (searchedData.searchBy === 'Project Details') {
-            if ((index.projectId + ' - ' + index.projectName) === searchedData.searchValue) {
+            if ((index.projectId) === searchedData.searchValue) {
               this.resultantArray.push(index);
             }
           } else

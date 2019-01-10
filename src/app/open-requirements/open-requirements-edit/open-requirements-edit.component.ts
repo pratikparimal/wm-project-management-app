@@ -28,42 +28,66 @@ export class OpenRequirementsEditComponent implements OnInit {
   openRequirementData: OpenRequirementFormModel;
   errorMessage: string;
   projId: any;
+  updateData: Object;
 
   constructor(private fb: FormBuilder,
     public dialogRef: MatDialogRef<OpenRequirementsEditComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: OpenRequirementFormModel,
+    @Inject(MAT_DIALOG_DATA) public data: any,
     private _openRequirementService: OpenRequirementService,
     public snackBar: MatSnackBar) {
 
-
-    this.openRequirementForm = this.fb.group({
-      domainName: [''],
-      ownerName: [''],
-      winzoneId: [''],
-      winzoneOpportunity: [''],
-      opportunityIdentifiedDate: [''],
-      projectId: [''],
-      projectName: [''],
-      groupName: [''],
-      locationName: [''],
-      billStartDate: [''],
-      currStatus: [''],
-      soLineItemID: [''],
-      profilesInEvaluation: [''],
-      requirementComment: [''],
-      forecastType: [''],
-      filledInternally: [''],
-      closureComment: [''],
-      skillset: [''],
-      billEndDate: [''],
-      rate: [''],
-      revenue: [''],
-      soCreatedDate: [''],
-    });
-
+      this.openRequirementForm = this.fb.group({
+        domainName: [''],
+        ownerName: [''],
+        winzoneId: [''],
+        winzoneOpportunity: [''],
+        opportunityIdentifiedDate: [''],
+        projectId: [''],
+        projectName: [''],
+        groupName: [''],
+        locationName: [''],
+        billStartDate: [''],
+        currStatus: [''],
+        soLineItemID: [''],
+        profilesInEvaluation: [''],
+        requirementComment: [''],
+        forecastType: [''],
+        filledInternally: [''],
+        closureComment: [''],
+        skillset: [''],
+        billEndDate: [''],
+        rate: [''],
+        revenue: [''],
+        soCreatedDate: [''],
+      });
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.openRequirementForm.patchValue({
+      domainName: this.data.updateData.domainName,
+      ownerName: this.data.updateData.ownerName,
+      winzoneId: this.data.updateData.winzoneId,
+      winzoneOpportunity: this.data.updateData.winzoneOpportunity,
+      opportunityIdentifiedDate: this.data.updateData.opportunityIdentifiedDate,
+      projectId: this.data.updateData.projectId,
+      projectName: this.data.updateData.projectName,
+      groupName: this.data.updateData.groupName,
+      locationName: this.data.updateData.locationName,
+      billStartDate: this.data.updateData.billStartDate,
+      currStatus: this.data.updateData.currStatus,
+      soLineItemID: this.data.updateData.soLineItemID,
+      profilesInEvaluation: this.data.updateData.profilesInEvaluation,
+      requirementComment: this.data.updateData.requirementComment,
+      forecastType: this.data.updateData.forecastType,
+      filledInternally: this.data.updateData.filledInternally,
+      closureComment: this.data.updateData.closureComment,
+      skillset: this.data.updateData.skillset,
+      billEndDate: this.data.updateData.billEndDate,
+      rate: this.data.updateData.rate,
+      revenue: this.data.updateData.revenue,
+      soCreatedDate: this.data.updateData.soCreatedDate,
+    });
+   }
 
 
   onProjectSelect(event: any) {
@@ -80,12 +104,13 @@ export class OpenRequirementsEditComponent implements OnInit {
       console.log('just check');
       console.log(openRequirementData);
       console.log(reqData);
-      this._openRequirementService.updateOpenRequirementData(openRequirementData)
-        .subscribe(
-          () => this.onSaveComplete(),
-          (error: any) => this.errorMessage = <any>error
-        );
-      this.snackBar.open('Open Requirement Added Successfully', '', { duration: 2000, });
+      // this._openRequirementService.updateOpenRequirementData(openRequirementData)
+      //   .subscribe(
+      //     () => this.onSaveComplete(),
+      //     (error: any) => this.errorMessage = <any>error
+      //   );
+      this._openRequirementService.updateOpenRequirementData(openRequirementData);
+      this.snackBar.open('Open Requirement Updated Successfully', '', { duration: 2000, });
       this.dialogRef.close();
     }
   }

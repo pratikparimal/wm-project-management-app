@@ -1,5 +1,5 @@
 export class ResourceDetails{
-     public cogId: Number;
+     public cogId: number;
      public name: String;
      public wmId:String;
      public projectId:Number;
@@ -11,9 +11,10 @@ export class ResourceDetails{
      public pickerStart:Date;
      public pickerEnd:Date;
      public allocation:Number;
-     public ownerName:String;
-     public groupName:String;
-     public domainName:String;
+     public skillSet:String;
+     public experience:Number;
+     public role:String;
+     public rate:Number;
 }
 
 

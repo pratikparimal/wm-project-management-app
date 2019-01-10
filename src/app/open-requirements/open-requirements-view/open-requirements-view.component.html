@@ -101,7 +101,7 @@
             <ng-container matColumnDef="actionRow" stickyEnd>
               <th mat-header-cell *matHeaderCellDef></th>
               <mat-cell *matCellDef="let element">
-                <button mat-icon-button (click)="editRequirementData(element.soLineItemID)">
+                <button mat-icon-button (click)="editRequirementData(element)">
                   <mat-icon>edit</mat-icon>
                 </button>
                 <button mat-icon-button color="warn" (click)="deleteRequirementData(element.soLineItemID)">

@@ -20,9 +20,10 @@ export class ResourceDetailsData implements InMemoryDbService {
                 pickerStart : null,
                 pickerEnd: null,
                 allocation : 39,
-                ownerName: "Rich",
-                groupName : "WM-FIN",
-                domainName: "Retail"
+                skillSet: "Java",
+                experience : 7,
+                role:"Associate",
+                rate:10
       },
             {
                 cogId: 7,
@@ -37,9 +38,10 @@ export class ResourceDetailsData implements InMemoryDbService {
                 pickerStart : null,
                 pickerEnd: null,
                 allocation : 66,
-                ownerName: "Rich",
-                groupName : "WM-GLS",
-                domainName: "Health Care"
+                skillSet: "Java",
+                experience : 7,
+                role:"Associate",
+                rate:10
             },
             {
                 cogId: 8,
@@ -54,9 +56,10 @@ export class ResourceDetailsData implements InMemoryDbService {
                 pickerStart : null,
                 pickerEnd: null,
                 allocation : 39,
-                ownerName: "harry",
-                groupName : "WM-FIN",
-                domainName: "Retail"
+                skillSet: "Java",
+                experience : 7,
+                role:"Associate",
+                rate:10
             }
         ];
         return { resources };
