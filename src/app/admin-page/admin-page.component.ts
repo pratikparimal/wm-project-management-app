@@ -33,12 +33,14 @@ export class AdminPageComponent implements OnInit {
     console.log('uploading...');
     const fd = new FormData();
     fd.append('file', this.selectedFile);
-    this._resourceService.saveExcelFile(fd).subscribe((response)=>{
+    this._resourceService.saveExcelFile(fd).subscribe((response) => {
       console.log(response);
     });
   }
 
   cancelUpload() {
     console.log('cancelling...');
+    this.selectedFile = null;
+     this.fileSelected = false;
   }
 }
