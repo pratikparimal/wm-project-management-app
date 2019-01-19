@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { OpenRequirementServiceService } from './open-requirement-service.service';
+import { OpenRequirementService } from './open-requirement-service.service';
 
 describe('OpenRequirementServiceService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: OpenRequirementServiceService = TestBed.get(OpenRequirementServiceService);
+    const service: OpenRequirementService = TestBed.get(OpenRequirementService);
     expect(service).toBeTruthy();
   });
 });

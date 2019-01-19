@@ -146,6 +146,9 @@ export class OpenRequirementsFormComponent implements OnInit {
     this.totalRevenue = 8 * rate * Math.ceil(timeDiff / (1000 * 3600 * 24));
     console.log('total revenue : ', this.totalRevenue);
     timeDiff = 0;
+    this.openRequirementForm.patchValue({
+      revenue: this.totalRevenue
+    });
   }
 
 }

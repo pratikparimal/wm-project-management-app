@@ -19,6 +19,7 @@ export class OpenRequirementService {
   constructor(private http: HttpClient) { }
 
   getAllOpenRequirementData(): Observable<OpenRequirementFormModel[]> {
+    this.dataUrl = 'http://localhost:8083/api/requirements';
     return this.http.get<OpenRequirementFormModel[]>(this.dataUrl)
       .pipe(
         tap(data => console.log('All : ' + JSON.stringify(data))),
@@ -41,6 +42,7 @@ export class OpenRequirementService {
   createOpenRequirementData(requirement: OpenRequirementFormModel): Observable<OpenRequirementFormModel> {
     console.log('in post func ' + requirement);
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    this.dataUrl = 'http://localhost:8083/api/requirement';
     return this.http.post<OpenRequirementFormModel>(this.dataUrl, requirement, { headers: headers })
     .pipe(
       tap(data => console.log('New Requirement : ' + JSON.stringify(data))),
@@ -56,6 +58,17 @@ export class OpenRequirementService {
 
   updateOpenRequirementData(requirement: OpenRequirementFormModel): void {
     console.log('in put func ' + requirement);
+  }
+
+  deleteOpenRequirementData(soLineItemID: number): Observable<{}> {
+    this.dataUrl = 'http://localhost:8083/api/deleteRequirement';
+    const deleteURL = `${this.dataUrl}/${soLineItemID}`;
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.delete<OpenRequirementFormModel>(deleteURL, { headers: headers })
+    .pipe(
+      tap(data => console.log('Requirement Deleted : ' + JSON.stringify(data))),
+      catchError(this.handleError)
+    );
   }
 
   private handleError(err: HttpErrorResponse) {
@@ -95,6 +108,7 @@ export class OpenRequirementService {
       closureComment: null
     };
   }
+
 
   // putOpenRequirementData(data: OpenRequirementFormModel) {
   //   this.openRequirementData = data;

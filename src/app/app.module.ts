@@ -54,7 +54,7 @@ import { OpenRequirementsEditComponent } from './open-requirements/open-requirem
     FlexLayoutModule,
     FlexModule,
     HttpClientModule,
-    InMemoryWebApiModule.forRoot(AllDataAPI)
+    // InMemoryWebApiModule.forRoot(AllDataAPI)
   ],
   entryComponents: [
     OpenRequirementsFormComponent,

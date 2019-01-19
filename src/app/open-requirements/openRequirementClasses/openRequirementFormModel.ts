@@ -19,7 +19,7 @@ export class OpenRequirementFormModel {
     skillset: string;
     billEndDate: string;
     rate: number;
-    revenue: string;
+    revenue: number;
     soCreatedDate: string;
 
 

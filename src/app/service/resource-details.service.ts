@@ -33,7 +33,7 @@ export class ResourceDetailsService {
         tap(data => console.log('AllR : ' + JSON.stringify(data))),
         catchError(this.handleError)
       );
-    //return of(this.resourceData);
+    // return of(this.resourceData);
   }
 
   private handleError(err: HttpErrorResponse) {

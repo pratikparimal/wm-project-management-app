@@ -69,9 +69,22 @@ export class OpenRequirementsViewComponent implements OnInit {
     });
   }
 
-  deleteRequirementData(soLineItemID: number) {
+  deleteRequirementData(soLineItemID: number): void {
     console.log('Delete Function for : ' + soLineItemID);
-    alert('Do you want to delete record for ' + soLineItemID);
+    if ( confirm('Do you want to delete record for ' + soLineItemID)) {
+      this._openRequirementService.deleteOpenRequirementData(soLineItemID)
+      .subscribe(
+        () => this.onSaveComplete(),
+        (error: any) => this.errorMessage = <any>error
+      );
+    } else {
+      console.log('Data not deleted for ' + soLineItemID);
+    }
+    // alert('Do you want to delete record for ' + soLineItemID);
+  }
+
+  onSaveComplete() {
+    console.log('Data deleted');
   }
 }
 
